@@ -21,8 +21,8 @@ interface LayoutContainerProps {
 
 // Wrapper props for render/children callback.
 interface LayoutContainerRenderProps {
-  render?: (props: LayoutContainerProps) => React.ReactNode
-  children?: (props: LayoutContainerProps) => React.ReactNode
+  render?: (props: LayoutContainerProps) => React.ReactNode;
+  children?: (props: LayoutContainerProps) => React.ReactNode;
 }
 
 const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, children }) => {
@@ -39,7 +39,7 @@ const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, childre
 
         // Obtain the `theme` state and the `setTheme` action.
         // Note that per Redux conventions actions MUST be wrapped inside `store.dispatch()`
-        const { theme } = state.layout;
+        const { theme } = state.layout
         const setTheme = (tc: ThemeColors) => store.dispatch(layoutActions.setTheme(tc));
 
         // Create a render/children props wrapper with the above variables set as a callback.

@@ -6,7 +6,6 @@ export interface Theme {
     body: string;
     headings: string;
     borders: string;
-    tableOdd: string;
     brand: string;
     black: string;
     white: string;
@@ -15,11 +14,6 @@ export interface Theme {
       agi: string;
       int: string;
     };
-  };
-  fonts: {
-    body: string;
-    headings: string;
-    monospace: string;
   };
   fontSizes: {
     h1: string;

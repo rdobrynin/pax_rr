@@ -1,0 +1,29 @@
+header {
+  .top-navigation {
+    display: flex;
+    justify-content: space-between;
+    flex: max-content;
+    height: 50px;
+    background-color: #30364D;
+    padding: 0 30px;
+    align-items: center;
+
+    nav {
+      list-style: none;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 300;
+        margin: 0 0.6rem;
+        font-size: 0.9rem;
+        &.is-active {
+          text-decoration: underline;
+          font-weight: 400;
+        }
+      }
+    }
+
+  }
+
+}
