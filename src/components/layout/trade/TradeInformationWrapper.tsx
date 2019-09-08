@@ -1,5 +1,5 @@
-import styled from '../../../utils/styled'
-import { device } from '../../../helpers/device'
+import styled from '../../../utils/styled';
+import { device } from '../../../helpers/device';
 
 const TradeInformationWrapper = styled.div`
     display: flex;
@@ -21,6 +21,6 @@ const TradeInformationWrapper = styled.div`
   @media ${device.tablet} {
     flex: auto;
   }
-`
+`;
 
-export default TradeInformationWrapper
+export default TradeInformationWrapper;
