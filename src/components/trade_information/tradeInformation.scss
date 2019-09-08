@@ -1,0 +1,18 @@
+.trade-information {
+  margin-bottom: 20px;
+
+  span {
+    color: #575D6C;
+
+    &.trade-information__seller {
+      font-weight: 600;
+    }
+  }
+
+  .trade-information__session {
+    padding: 10px 0;
+    color: #a7a7a7;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}

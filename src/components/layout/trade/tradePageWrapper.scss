@@ -1,0 +1,22 @@
+.trade-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .column {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  .row-bottom {
+    align-self: flex-end;
+  }
+
+}

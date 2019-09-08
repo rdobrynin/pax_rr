@@ -12,65 +12,6 @@ html, body, #root, #root>div {
 }
 
 #root {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-}
-
-
-.trade-wrapper {
-  display: flex;
-  flex: 1 1 auto;
-  height: 100%;
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .column {
-    display: flex;
-    flex: 1 1 auto;
-  }
-
-  .row-bottom {
-    align-self: flex-end;
-  }
-
-  .col-left {
-    flex: 1 0 5%;
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 2px 1px 4px -1px rgba(216, 216, 216, 0.75);
-    border-right: 1px solid #d4d4d4;
-    border-left: 1px solid #d4d4d4;
-  }
-  .col-center {
-    flex: 1 1 28%;
-    padding: 30px;
-    box-shadow: inset -1px 1px 5px -1px rgba(208, 208, 208, 0.75);
-    background-color: $bgColor;
-  }
-  .col-right {
-    flex: 1 0 5%;
-    background-color: #fff;
-    padding: 30px;
-    border-left: 1px solid $borderColor;
-  }
-
-  .orange-column {
-    background-color: orange;
-    height: 100px;
-  }
-
-  .blue-column {
-    background-color: blue;
-    height: 100px;
-  }
-
-  .green-column {
-    background-color: green;
-    height: 100px;
-  }
 }

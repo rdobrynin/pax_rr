@@ -8,7 +8,7 @@ export const ActionNavigation: React.FunctionComponent<ActionNavigationProps> = 
       <ul>
         {items.map((item, i) => (
           // no specs for other pages were assigned;
-          <li key={i} className={item.title.toLowerCase() === 'trades' ? 'is_active' : ''}>
+          <li key={i} className={item.title.toLowerCase() === 'trades' ? 'is-active' : ''}>
             <div>{item.title}</div>
           </li>
         ))}

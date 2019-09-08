@@ -17,6 +17,8 @@ header {
         font-weight: 300;
         margin: 0 0.6rem;
         font-size: 0.9rem;
+        display: inline-flex;
+        line-height: 50px;
         &.is-active {
           text-decoration: underline;
           font-weight: 400;
