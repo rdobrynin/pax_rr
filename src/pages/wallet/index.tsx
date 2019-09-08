@@ -1,15 +1,15 @@
-import * as React from 'react';
-import Page from '../../components/layout/Page';
-import Container from '../../components/layout/Container';
-import { TopNavigation } from '../../components/layout/top_navigation/TopNavigation';
-import { linksTopNavigation } from '../../data/linksTopNavigation';
+import * as React from 'react'
+import Page from '../../components/layout/Page'
+import Container from '../../components/layout/Container'
+import { TopNavigation } from '../../components/layout/top_navigation/TopNavigation'
+import { linksTopNavigation } from '../../data/linksTopNavigation'
 
-import { NavLink } from 'react-router-dom';
-import styled from '../../utils/styled';
-import './index.scss';
+import { NavLink } from 'react-router-dom'
+import styled from '../../utils/styled'
+import './index.scss'
 
 const TempLink = styled(NavLink)`
-`;
+`
 
 export default function WalletPage() {
   return (
@@ -24,5 +24,5 @@ export default function WalletPage() {
         </div>
       </Container>
     </Page>
-  );
+  )
 }

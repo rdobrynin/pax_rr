@@ -1,14 +1,14 @@
-import * as React from 'react';
-import Page from '../../components/layout/Page';
-import Container from '../../components/layout/Container';
-import { linksTopNavigation } from '../../data/linksTopNavigation';
-import { TopNavigation } from '../../components/layout/top_navigation/TopNavigation';
-import { NavLink } from 'react-router-dom';
-import styled from '../../utils/styled';
-import './index.scss';
+import * as React from 'react'
+import Page from '../../components/layout/Page'
+import Container from '../../components/layout/Container'
+import { linksTopNavigation } from '../../data/linksTopNavigation'
+import { TopNavigation } from '../../components/layout/top_navigation/TopNavigation'
+import { NavLink } from 'react-router-dom'
+import styled from '../../utils/styled'
+import './index.scss'
 
 const TempLink = styled(NavLink)`
-`;
+`
 
 export default function BuyPage() {
   return (
@@ -23,5 +23,5 @@ export default function BuyPage() {
         </div>
       </Container>
     </Page>
-  );
+  )
 }

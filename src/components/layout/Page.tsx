@@ -1,4 +1,4 @@
-import styled from '../../utils/styled';
+import styled from '../../utils/styled'
 
 const Page = styled('div')`
   display: flex;
@@ -8,6 +8,6 @@ const Page = styled('div')`
   align-items: stretch;
   align-content: stretch;
   height: 100%;
-`;
+`
 
-export default Page;
+export default Page

@@ -1,4 +1,3 @@
-
 export type ThemeColors = 'paxful';
 
 export enum LayoutActionTypes {

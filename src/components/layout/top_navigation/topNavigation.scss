@@ -8,6 +8,13 @@ header {
     padding: 0 30px;
     align-items: center;
 
+    .top-navigation__logo {
+      @media only screen and (max-width: 767px) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
     nav {
       list-style: none;
 
@@ -19,6 +26,7 @@ header {
         font-size: 0.9rem;
         display: inline-flex;
         line-height: 50px;
+
         &.is-active {
           text-decoration: underline;
           font-weight: 400;

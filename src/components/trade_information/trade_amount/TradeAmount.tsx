@@ -1,5 +1,5 @@
-import * as React from 'react';
-import './tradeAmount.scss';
+import * as React from 'react'
+import './tradeAmount.scss'
 
 export const TradeAmount = () => (
   <div>
@@ -10,4 +10,4 @@ export const TradeAmount = () => (
       25.00
     </div>
   </div>
-);
+)

@@ -1,4 +1,4 @@
-import styled from '../../utils/styled';
+import styled from '../../utils/styled'
 
 const Container = styled('div')`
   margin: 0 auto;
@@ -6,4 +6,4 @@ const Container = styled('div')`
   height: 100%;
 `
 
-export default Container;
+export default Container

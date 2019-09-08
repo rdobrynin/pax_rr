@@ -1,5 +1,5 @@
-import * as React from 'react';
-import './tradeRate.scss';
+import * as React from 'react'
+import './tradeRate.scss'
 
 export const TradeRate = () => (
   <div>
@@ -10,4 +10,4 @@ export const TradeRate = () => (
       0.00234524
     </div>
   </div>
-);
+)

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import './tradeReleaseBtc.scss';
+import * as React from 'react'
+import './tradeReleaseBtc.scss'
 
 export const TradeReleaseBtc = () => (
-  <button>Release Bitcoins</button>
-);
+  <button className={'large-btn'}>Release Bitcoins</button>
+)

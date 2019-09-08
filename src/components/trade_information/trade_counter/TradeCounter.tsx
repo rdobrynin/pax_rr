@@ -1,5 +1,5 @@
-import * as React from 'react';
-import './tradeCounter.scss';
+import * as React from 'react'
+import './tradeCounter.scss'
 
 export const TradeCounter = () => (
   <div>
@@ -10,4 +10,4 @@ export const TradeCounter = () => (
       <span>4</span>
     </div>
   </div>
-);
+)

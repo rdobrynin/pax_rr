@@ -1,5 +1,5 @@
-import * as React from 'react';
-import './tradeReputation.scss';
+import * as React from 'react'
+import './tradeReputation.scss'
 
 export const TradeReputation = () => (
   <div>
@@ -10,4 +10,4 @@ export const TradeReputation = () => (
       <span>+37</span> / <span>-1</span>
     </div>
   </div>
-);
+)

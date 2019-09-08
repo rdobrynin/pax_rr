@@ -1,5 +1,5 @@
-import * as React from 'react';
-import './tradeHash.scss';
+import * as React from 'react'
+import './tradeHash.scss'
 
 export const TradeHash = () => (
   <div>
@@ -10,4 +10,4 @@ export const TradeHash = () => (
       45aFD3Rr
     </div>
   </div>
-);
+)

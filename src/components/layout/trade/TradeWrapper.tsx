@@ -1,4 +1,5 @@
 import styled from '../../../utils/styled';
+import { device } from '../../../helpers/device';
 
 const TradeWrapper = styled('div')`
     display: flex;
@@ -12,6 +13,16 @@ const TradeWrapper = styled('div')`
     border-right: 1px solid #d4d4d4;
     border-left: 1px solid #d4d4d4;
     flex: 1 0 8%;
+
+  @media ${device.desktop} {
+   flex: 1 0 10%;
+  }
+   @media ${device.laptop} {
+   flex: 1 0 15%;
+  }
+  @media ${device.tablet} {
+      flex: auto;
+  }
 `;
 
 export default TradeWrapper;

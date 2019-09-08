@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { ReactReduxContext } from 'react-redux';
+import * as React from 'react'
+import { ReactReduxContext } from 'react-redux'
 
-import { ApplicationState } from '../store';
-import { ThemeColors } from '../store/layout';
-import * as layoutActions from '../store/layout/actions';
+import { ApplicationState } from '../store'
+import { ThemeColors } from '../store/layout'
+import * as layoutActions from '../store/layout/actions'
 
 // Now here is an example of creating container components.
 //
@@ -35,26 +35,26 @@ const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, childre
       {({ store }) => {
         // Use the standard `store.getState()` redux function to get the root state, and cast
         // it with our ApplicationState type.
-        const state: ApplicationState = store.getState();
+        const state: ApplicationState = store.getState()
 
         // Obtain the `theme` state and the `setTheme` action.
         // Note that per Redux conventions actions MUST be wrapped inside `store.dispatch()`
         const { theme } = state.layout
-        const setTheme = (tc: ThemeColors) => store.dispatch(layoutActions.setTheme(tc));
+        const setTheme = (tc: ThemeColors) => store.dispatch(layoutActions.setTheme(tc))
 
         // Create a render/children props wrapper with the above variables set as a callback.
         if (render) {
-          return render({ theme, setTheme });
+          return render({ theme, setTheme })
         }
 
         if (children) {
-          return children({ theme, setTheme });
+          return children({ theme, setTheme })
         }
 
-        return null;
+        return null
       }}
     </ReactReduxContext.Consumer>
-  );
-};
+  )
+}
 
-export default LayoutContainer;
+export default LayoutContainer

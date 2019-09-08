@@ -9,4 +9,7 @@
   text-transform: uppercase;
   color: #52D48C;
   font-size: 1.1rem;
+  @media only screen and (max-width: 850px) {
+    font-size: inherit;
+  }
 }

@@ -1,5 +1,5 @@
-import styled from '../../../utils/styled';
-import './tradePageWrapper.scss';
+import styled from '../../../utils/styled'
+import './tradePageWrapper.scss'
 
 const TradePageWrapper = styled('div')`
   display: flex;
@@ -7,4 +7,4 @@ const TradePageWrapper = styled('div')`
   height: 100%;
 `
 
-export default TradePageWrapper;
+export default TradePageWrapper

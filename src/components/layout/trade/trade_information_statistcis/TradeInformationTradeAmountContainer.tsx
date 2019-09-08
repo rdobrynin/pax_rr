@@ -1,4 +1,4 @@
-import styled from '../../../../utils/styled';
+import styled from '../../../../utils/styled'
 
 const TradeInformationTradeAmountContainer = styled('div')`
     display: flex;
@@ -8,6 +8,5 @@ const TradeInformationTradeAmountContainer = styled('div')`
     box-sizing: border-box;
     border-right: 1px solid #d4d4d4;
     border-bottom: 1px solid #d4d4d4;
-`;
-
-export default TradeInformationTradeAmountContainer;
+`
+export default TradeInformationTradeAmountContainer

@@ -1,6 +1,7 @@
-import styled from '../../../utils/styled';
+import styled from '../../../utils/styled'
+import { device } from '../../../helpers/device'
 
-const TradeInformationWrapper = styled('div')`
+const TradeInformationWrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -9,6 +10,17 @@ const TradeInformationWrapper = styled('div')`
     border-right: 1px solid #d4d4d4;
     align-items: center;
     flex: 1 0 10%;
-`;
 
-export default TradeInformationWrapper;
+  @media ${device.desktop} {
+   flex: 1 0 20%;
+  }
+   @media ${device.laptop} {
+    flex: 1 0 25%;
+    font-size: 0.8rem;
+  }
+  @media ${device.tablet} {
+    flex: auto;
+  }
+`
+
+export default TradeInformationWrapper

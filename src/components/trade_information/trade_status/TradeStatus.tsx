@@ -1,5 +1,5 @@
-import * as React from 'react';
-import './tradeStatus.scss';
+import * as React from 'react'
+import './tradeStatus.scss'
 
 export const TradeStatus = () => (
   <div>
@@ -10,4 +10,4 @@ export const TradeStatus = () => (
       paid
     </div>
   </div>
-);
+)

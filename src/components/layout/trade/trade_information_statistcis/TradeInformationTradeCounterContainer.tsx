@@ -1,4 +1,4 @@
-import styled from '../../../../utils/styled';
+import styled from '../../../../utils/styled'
 
 const TradeInformationTradeCounterContainer = styled('div')`
     display: flex;
@@ -6,6 +6,5 @@ const TradeInformationTradeCounterContainer = styled('div')`
     justify-content: center;
     flex-direction: column;
     border-bottom: 1px solid #d4d4d4;
-`;
-
-export default TradeInformationTradeCounterContainer;
+`
+export default TradeInformationTradeCounterContainer
