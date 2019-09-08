@@ -14,7 +14,7 @@ export const TopNavigation: React.FunctionComponent<HeaderProps> = ({ title, lin
     <Media query="(max-width: 767px)">
       {matches =>
         matches ? (
-          <div>
+        <React.Fragment>
             <div className={'sidebar-navigation'}>
               <nav>
                 <ul>
@@ -34,7 +34,7 @@ export const TopNavigation: React.FunctionComponent<HeaderProps> = ({ title, lin
                 </HeaderNavLink>
               </div>
             </div>
-          </div>
+          </React.Fragment>
         ) : (
           <div className={'top-navigation'}>
             <div className={'top-navigation__logo'}>
