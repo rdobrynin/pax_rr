@@ -6,12 +6,24 @@ button {
     cursor: pointer;
     color: #ffffff;
     font-weight: 300;
-    font-size: 17px;
+    font-size: 1rem;
     padding: 9px 25px;
     text-decoration: none;
     outline: none;
     box-shadow: 2px 2px 5px 0 rgb(224, 224, 224);
     letter-spacing: 1px;
+    @media only screen and (max-width: 850px) {
+      font-size: 0.7rem;
+    }
+
+    @media only screen and (max-width: 785px) {
+      font-size: 0.6rem;
+    }
+
+    @media only screen and (max-width: 767px) {
+      font-size: 1rem;
+    }
+
 
     &:hover {
       background-color: #4cd470;

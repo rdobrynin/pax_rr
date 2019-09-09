@@ -1,8 +1,8 @@
 .trade-information {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   line-height: 1.5;
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
   font-size: 0.9rem;
 
   span {
@@ -14,7 +14,6 @@
   }
 
   .trade-information__session {
-    padding: 10px 0;
     color: #a7a7a7;
     text-align: center;
     font-size: 0.9rem;

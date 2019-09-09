@@ -1,10 +1,11 @@
+@import '.././../../styles/variables.scss';
 header {
   .top-navigation {
     display: flex;
     justify-content: space-between;
     flex: max-content;
     height: 50px;
-    background-color: #30364D;
+    background-color: $activeLinkColor;
     padding: 0 30px;
     align-items: center;
 
@@ -19,7 +20,7 @@ header {
       list-style: none;
 
       a {
-        color: #fff;
+        color: white;
         text-decoration: none;
         font-weight: 300;
         margin: 0 0.6rem;
@@ -57,7 +58,7 @@ header {
     flex-direction: column;
     justify-content: center;
     a {
-      color: #30364D;
+      color: $activeLinkColor;
       text-decoration: none;
       line-height: 2rem;
       &.is-active {

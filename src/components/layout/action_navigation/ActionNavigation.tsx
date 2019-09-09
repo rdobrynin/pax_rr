@@ -1,9 +1,9 @@
 import * as React from 'react'
 import './ActionNavigation.scss'
-import { ActionNavigationProps } from '../../../models/navigation/navigation'
+import { IActionNavigationProps } from '../../../models/navigation/navigation'
 import Media from 'react-media'
 
-export const ActionNavigation: React.FunctionComponent<ActionNavigationProps> = ({ items }) => (
+export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> = ({ items }) => (
 
   <div>
     <Media query="(max-width: 767px)">

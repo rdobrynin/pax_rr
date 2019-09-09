@@ -9,13 +9,13 @@ const TradeInformationWrapper = styled.div`
     border-left: 1px solid #d4d4d4;;
     border-right: 1px solid #d4d4d4;
     align-items: center;
-    flex: 1 0 10%;
+    flex: 1 0 4%;
 
   @media ${device.desktop} {
-   flex: 1 0 20%;
+   flex: 1 0 7%;
   }
    @media ${device.laptop} {
-    flex: 1 0 25%;
+    flex: 1 0 10%;
     font-size: 0.8rem;
   }
   @media ${device.tablet} {

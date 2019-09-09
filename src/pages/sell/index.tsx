@@ -11,26 +11,25 @@ import TradeChatWrapper from '../../components/layout/trade/TradeChatWrapper'
 import TradeInformationWrapper from '../../components/layout/trade/TradeInformationWrapper'
 import { TradeInformation } from '../../components/trade_information/TradeInformation'
 import { TradeReleaseBtc } from '../../components/trade_information/trade_release_btc/TradeReleaseBtc'
-import TradeInformationStatisticsWrapper
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationStatisticsWrapper'
-import TradeInformationReputationContainer
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationReputationContainer'
-import TradeInformationTradeCounterContainer
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeCounterContainer'
-import TradeInformationTradeStatusContainer
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeStatusContainer'
-import TradeInformationTradeHashContainer
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeHashContainer'
-import TradeInformationTradeAmountContainer
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeAmountContainer'
-import TradeInformationTradeRateContainer
-  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeRateContainer'
+import TradeInformationStatisticsWrapper from '../../components/layout/trade/trade_information_statistcis/TradeInformationStatisticsWrapper'
+import TradeInformationReputationContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationReputationContainer'
+import TradeInformationTradeCounterContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeCounterContainer'
+import TradeInformationTradeStatusContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeStatusContainer'
+import TradeInformationTradeHashContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeHashContainer'
+import TradeInformationTradeAmountContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeAmountContainer'
+import TradeInformationTradeRateContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeRateContainer'
 import { TradeReputation } from '../../components/trade_information/trade_reputation/TradeReputation'
 import { TradeCounter } from '../../components/trade_information/trade_counter/TradeCounter'
 import { TradeStatus } from '../../components/trade_information/trade_status/TradeStatus'
 import { TradeHash } from '../../components/trade_information/trade_hash/TradeHash'
 import { TradeAmount } from '../../components/trade_information/trade_amount/TradeAmount'
 import { TradeRate } from '../../components/trade_information/trade_rate/TradeRate'
+import { TradeItem } from '../../components/trade/TradeItem'
+import { Buyer } from '../../data/buyer'
+import TradeChatContainer from '../../components/layout/trade/TradeChatContainer'
+import { ChatInput } from '../../components/chat/chat-input/ChatInput'
+import { ChatHistory } from '../../components/chat/chat-history/ChatHistory'
+import { ChatHeader } from '../../components/chat/chat-header/ChatHeader'
 
 export default function SellPage() {
   return (
@@ -42,13 +41,23 @@ export default function SellPage() {
         <TradePageWrapper className={'trade-wrapper'}>
           <div className={'row'}>
             <TradeWrapper>
-              Some Text in Column One
+              <TradeItem name={Buyer.name}
+                         image={Buyer.image}
+                         amount={Buyer.amount}
+                         reputationPositive={Buyer.reputationPositive}
+                         reputationNegative={Buyer.reputationNegative}
+                         trades={Buyer.trades}/>
             </TradeWrapper>
             <TradeChatWrapper>
-              Some Text in Column Two
-              <div className={'column row-bottom'}>
-                <input type="text"/>
-              </div>
+              <TradeChatContainer>
+                <ChatHeader/>
+                <div>
+                  <ChatHistory/>
+                </div>
+                <div>
+                  <ChatInput/>
+                </div>
+              </TradeChatContainer>
             </TradeChatWrapper>
             <TradeInformationWrapper>
               <TradeInformation/>

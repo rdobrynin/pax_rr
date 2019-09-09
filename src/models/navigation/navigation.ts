@@ -1,19 +1,19 @@
-interface TopNavLinks {
+export interface ITopNavLinks {
   title: string;
   route: string;
 }
 
-export interface HeaderProps {
+export interface IHeaderProps {
   title: string;
-  links: TopNavLinks[];
+  links: ITopNavLinks[];
   logoImage: string;
   imageSize: string;
 }
 
-interface ActionNavLinks {
+interface IActionNavLinks {
   title: string;
 }
 
-export interface ActionNavigationProps {
-  items: ActionNavLinks[];
+export interface IActionNavigationProps {
+  items: IActionNavLinks[];
 }
