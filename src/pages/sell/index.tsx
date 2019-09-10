@@ -27,65 +27,165 @@ import { TradeRate } from '../../components/trade_information/trade_rate/TradeRa
 import { TradeItem } from '../../components/trade/TradeItem'
 import { Buyer } from '../../data/buyer'
 import TradeChatContainer from '../../components/layout/trade/TradeChatContainer'
-import { ChatInput } from '../../components/chat/chat-input/ChatInput'
+import { ChatInput, ChatProps } from '../../components/chat/chat-input/ChatInput'
 import { ChatHistory } from '../../components/chat/chat-history/ChatHistory'
+import { ChatState } from '../../store/chat/types'
+import { sendMessage } from '../../store/chat/actions'
+import { SystemState } from '../../store/system/types'
+import { updateSession } from '../../store/system/actions'
 import { ChatHeaderContainer } from '../../components/chat/chat-header/ChatHeaderContainer'
+import { fetchRequest } from '../../store/trades/actions'
+import { Trade } from '../../store/trades/types'
+import { Rate } from '../../store/rate/types'
+import { ApplicationState } from '../../store'
+import { connect } from 'react-redux'
+import LoadingSpinner from '../../components/spinner/Spinner'
 
-export default function SellPage() {
-  return (
-    <Page>
-      <TopNavigation title={'Paxful'} links={linksTopNavigation}
-                     logoImage={'./assets/images/project-logo.png'} imageSize={'137px'}/>
-      <ActionNavigation items={actionsNavigation}/>
-      <Container>
-        <TradePageWrapper className={'trade-wrapper'}>
-          <div className={'row'}>
-            <TradeWrapper>
-              <TradeItem name={Buyer.name}
-                         image={Buyer.image}
-                         amount={Buyer.amount}
-                         reputationPositive={Buyer.reputationPositive}
-                         reputationNegative={Buyer.reputationNegative}
-                         trades={Buyer.trades}/>
-            </TradeWrapper>
-            <TradeChatWrapper>
-              <TradeChatContainer>
-                <ChatHeaderContainer/>
-                <div>
-                  <ChatHistory/>
-                </div>
-                <div>
-                  <ChatInput/>
-                </div>
-              </TradeChatContainer>
-            </TradeChatWrapper>
-            <TradeInformationWrapper>
-              <TradeInformation/>
-              <TradeReleaseBtc/>
-              <TradeInformationStatisticsWrapper className={'grid'}>
-                <TradeInformationReputationContainer>
-                  <TradeReputation/>
-                </TradeInformationReputationContainer>
-                <TradeInformationTradeCounterContainer>
-                  <TradeCounter/>
-                </TradeInformationTradeCounterContainer>
-                <TradeInformationTradeStatusContainer>
-                  <TradeStatus/>
-                </TradeInformationTradeStatusContainer>
-                <TradeInformationTradeHashContainer>
-                  <TradeHash/>
-                </TradeInformationTradeHashContainer>
-                <TradeInformationTradeAmountContainer>
-                  <TradeAmount/>
-                </TradeInformationTradeAmountContainer>
-                <TradeInformationTradeRateContainer>
-                  <TradeRate/>
-                </TradeInformationTradeRateContainer>
-              </TradeInformationStatisticsWrapper>
-            </TradeInformationWrapper>
-          </div>
-        </TradePageWrapper>
-      </Container>
-    </Page>
-  )
+// interface AppProps {
+//   sendMessage: typeof sendMessage;
+//   updateSession: typeof updateSession;
+//   chat: ChatState;
+//   system: SystemState;
+//   thunkSendMessage: any;
+//   chatProps: ChatProps
+// }
+
+interface PropsFromTradesState {
+  loading: boolean,
+  data: Trade[]
+  errors?: string
 }
+
+interface PropsFromRateState {
+  loading: boolean,
+  data: Rate[]
+  errors?: string
+}
+
+interface PropsFromDispatch {
+  fetchRequest: typeof fetchRequest
+}
+
+type TradeProps = PropsFromTradesState & PropsFromDispatch
+type RateProps = PropsFromRateState & PropsFromDispatch
+
+// export type UpdateMessageParam = React.SyntheticEvent<{ value: string }>
+
+const API_RATE_ENDPOINT = process.env.REACT_APP_RATE_ENDPOINT || 'https://api.coindesk.com/v1/bpi/currentprice/USD.json'
+const API_TRADES_ENDPOINT = process.env.REACT_APP_TRADES_ENDPOINT || 'http://webdeveloper.ee/trades.json'
+
+class TradesPage extends React.Component<TradeProps, RateProps> {
+
+  public componentDidMount() {
+    const { fetchRequest: fr } = this.props;
+    fr()
+  }
+
+  // updateMessage = (event: UpdateMessageParam) => {
+  //   this.setState({ message: event.currentTarget.value });
+  // };
+
+  //   sendMessage = (message: string) => {
+  //     this.props.sendMessage({
+  //       user: this.props.system.userName,
+  //       message: message,
+  //       timestamp: new Date().getTime(),
+  //     });
+  //     this.setState({ message: '' });
+  // };
+
+  public render() {
+    const { loading, data } = this.props
+    return (
+      <Page>
+        {loading && data.length === 0 && (
+          <LoadingSpinner/>
+        )}
+        <TopNavigation title={'Paxful'} links={linksTopNavigation}
+                       logoImage={'./assets/images/project-logo.png'} imageSize={'137px'}/>
+        <ActionNavigation items={actionsNavigation}/>
+        <Container>
+          <TradePageWrapper className={'trade-wrapper'}>
+            <div className={'row'}>
+              <TradeWrapper>
+                <div><pre>{JSON.stringify(data, null, 2) }</pre></div>
+                {/*{data.map(trade => (*/}
+                  {/*<TradeItem name={'11212'}*/}
+                             {/*image={'12121'}*/}
+                             {/*amount={trade.bpi.rate_float}*/}
+                             {/*reputationPositive={Buyer.reputationPositive}*/}
+                             {/*reputationNegative={Buyer.reputationNegative}*/}
+                             {/*trades={Buyer.trades}/>*/}
+                {/*))}*/}
+                {/*<TradeItem name={Buyer.name}*/}
+                           {/*image={Buyer.image}*/}
+                           {/*amount={Buyer.amount}*/}
+                           {/*reputationPositive={Buyer.reputationPositive}*/}
+                           {/*reputationNegative={Buyer.reputationNegative}*/}
+                           {/*trades={Buyer.trades}/>*/}
+              </TradeWrapper>
+              <TradeChatWrapper>
+                <TradeChatContainer>
+                  <ChatHeaderContainer/>
+                  <div>
+                    <ChatHistory messages={[]}/>
+                  </div>
+                  {/*<ChatInput*/}
+                    {/*userName={'this.props.system.userName'}*/}
+                    {/*message={'this.props.chatProps.message'}*/}
+                    {/*updateMessage={this.updateMessage}*/}
+                    {/*sendMessage={this.sendMessage}*/}
+                  {/*/>*/}
+                </TradeChatContainer>
+              </TradeChatWrapper>
+              <TradeInformationWrapper>
+                <TradeInformation/>
+                <TradeReleaseBtc/>
+                <TradeInformationStatisticsWrapper className={'grid'}>
+                  <TradeInformationReputationContainer>
+                    <TradeReputation/>
+                  </TradeInformationReputationContainer>
+                  <TradeInformationTradeCounterContainer>
+                    <TradeCounter/>
+                  </TradeInformationTradeCounterContainer>
+                  <TradeInformationTradeStatusContainer>
+                    <TradeStatus/>
+                  </TradeInformationTradeStatusContainer>
+                  <TradeInformationTradeHashContainer>
+                    <TradeHash/>
+                  </TradeInformationTradeHashContainer>
+                  <TradeInformationTradeAmountContainer>
+                    <TradeAmount/>
+                  </TradeInformationTradeAmountContainer>
+                  <TradeInformationTradeRateContainer>
+                    <TradeRate/>
+                  </TradeInformationTradeRateContainer>
+                </TradeInformationStatisticsWrapper>
+              </TradeInformationWrapper>
+            </div>
+          </TradePageWrapper>
+        </Container>
+      </Page>
+    )
+  }
+}
+
+const mapStateToProps = ({ trades, rate }: ApplicationState) => ({
+  loading: trades.loading,
+  errors: trades.errors,
+  data: trades.data,
+  rate: rate.data,
+})
+
+const mapDispatchToProps = {
+  fetchRequest,
+}
+
+// Now let's connect our component!
+// With redux v4's improved typings, we can finally omit generics here.
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TradesPage)
+
+// export default SellPage

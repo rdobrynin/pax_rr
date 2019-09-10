@@ -4,10 +4,10 @@ export interface IBuyer {
   amount: number
   reputationPositive: number
   reputationNegative: number
-  trades: ITrades[],
+  trades: ITrade[],
 }
 
-export interface ITrades {
+export interface ITrade {
   hash: string
   amount: number
   currency: Currency

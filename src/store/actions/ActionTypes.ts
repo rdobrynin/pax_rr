@@ -1,3 +1,0 @@
-export const UPDATE_SESSION_TRADE = 'UPDATE_SESSION_TRADE'
-export const RESET_TRADE = 'RESET_TRADE'
-export const UPDATE_RATE = 'UPDATE_RATE'
