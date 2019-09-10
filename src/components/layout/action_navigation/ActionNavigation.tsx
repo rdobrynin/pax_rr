@@ -5,7 +5,7 @@ import Media from 'react-media'
 
 export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> = ({ items }) => (
 
-  <div>
+  <React.Fragment>
     <Media query="(max-width: 767px)">
       {matches =>
         matches ? (
@@ -28,6 +28,5 @@ export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> =
         )
       }
     </Media>
-
-  </div>
+  </React.Fragment>
 )

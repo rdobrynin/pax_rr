@@ -1,0 +1,16 @@
+input {
+  &:focus {
+    outline: none;
+  }
+}
+button {
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    border: 0;
+  }
+}

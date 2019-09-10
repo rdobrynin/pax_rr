@@ -29,7 +29,7 @@ import { Buyer } from '../../data/buyer'
 import TradeChatContainer from '../../components/layout/trade/TradeChatContainer'
 import { ChatInput } from '../../components/chat/chat-input/ChatInput'
 import { ChatHistory } from '../../components/chat/chat-history/ChatHistory'
-import { ChatHeader } from '../../components/chat/chat-header/ChatHeader'
+import { ChatHeaderContainer } from '../../components/chat/chat-header/ChatHeaderContainer'
 
 export default function SellPage() {
   return (
@@ -50,7 +50,7 @@ export default function SellPage() {
             </TradeWrapper>
             <TradeChatWrapper>
               <TradeChatContainer>
-                <ChatHeader/>
+                <ChatHeaderContainer/>
                 <div>
                   <ChatHistory/>
                 </div>

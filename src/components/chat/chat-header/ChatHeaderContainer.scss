@@ -1,0 +1,50 @@
+.chatHeader__wrapper {
+  height: 100px;
+  margin: -20px 0 20px 0;
+  border-bottom: 1px solid #d6d6d6;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .chatHeader__header {
+    text-align: center;
+    line-height: 1.5;
+    .chatHeader__title {
+      color: #646A77;
+      font-weight: 600;;
+      font-size: 1.2rem;
+    }
+    .chatHeader__value {
+      color: #a7a7a7;
+      font-size: 0.9rem;
+      span {
+        color: black;
+        &:first-child {
+          color: #52D48C;
+          font-weight: 600;
+        }
+        &:last-child {
+          color: red;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .chatHeader__action {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 20px;
+    button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #B4BEC6;
+    }
+    img {
+      width: 20px;
+    }
+  }
+}

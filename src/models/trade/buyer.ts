@@ -4,7 +4,7 @@ export interface IBuyer {
   amount: number
   reputationPositive: number
   reputationNegative: number
-  trades: ITrades[]
+  trades: ITrades[],
 }
 
 export interface ITrades {
