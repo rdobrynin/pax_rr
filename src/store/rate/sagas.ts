@@ -8,7 +8,6 @@ const API_ENDPOINT = 'https://api.coindesk.com'
 function* handleFetch() {
   try {
     const res = yield call(callApi, 'get', API_ENDPOINT, '/v1/bpi/currentprice/USD.json')
-
     if (res.error) {
       yield put(fetchError(res.error))
     } else {
@@ -27,8 +26,8 @@ function* watchFetchRequest() {
   yield takeEvery(RateActionTypes.FETCH_REQUEST, handleFetch)
 }
 
-function* tradesSaga() {
+function* rateSaga() {
   yield all([fork(watchFetchRequest)])
 }
 
-export default tradesSaga
+export default rateSaga

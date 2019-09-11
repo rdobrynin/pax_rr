@@ -3,16 +3,14 @@ import { TradesActionTypes } from './types'
 import { fetchError, fetchSuccess } from './actions'
 import { callApi } from '../../utils/api'
 
-const API_ENDPOINT = 'http://webdeveloper.ee'
+const API_ENDPOINT = 'http://localhost:5555'
 
 function* handleFetch() {
   try {
-    const res = yield call(callApi, 'get', API_ENDPOINT, '/trades.json')
-
+    const res = yield call(callApi, 'get', API_ENDPOINT, 'trades.json')
     if (res.error) {
       yield put(fetchError(res.error))
     } else {
-      console.log(res);
       yield put(fetchSuccess(res))
     }
   } catch (err) {

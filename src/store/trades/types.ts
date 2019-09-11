@@ -1,5 +1,14 @@
 
-export interface Trade extends ApiResponse {
+export interface Trades extends ApiResponse {
+  name: string
+  image: string
+  amount: number
+  reputationPositive: number
+  reputationNegative: number
+  trades: Trade[]
+}
+
+export interface Trade {
   hash: string
   amount: number
   currency: string

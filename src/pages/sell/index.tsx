@@ -72,7 +72,7 @@ type RateProps = PropsFromRateState & PropsFromDispatch
 // export type UpdateMessageParam = React.SyntheticEvent<{ value: string }>
 
 const API_RATE_ENDPOINT = process.env.REACT_APP_RATE_ENDPOINT || 'https://api.coindesk.com/v1/bpi/currentprice/USD.json'
-const API_TRADES_ENDPOINT = process.env.REACT_APP_TRADES_ENDPOINT || 'http://webdeveloper.ee/trades.json'
+const API_TRADES_ENDPOINT = process.env.REACT_APP_TRADES_ENDPOINT || 'http://webdeveloper.ee/trade.json'
 
 class TradesPage extends React.Component<TradeProps, RateProps> {
 
@@ -85,14 +85,14 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
   //   this.setState({ message: event.currentTarget.value });
   // };
 
-  //   sendMessage = (message: string) => {
-  //     this.props.sendMessage({
-  //       user: this.props.system.userName,
-  //       message: message,
-  //       timestamp: new Date().getTime(),
-  //     });
-  //     this.setState({ message: '' });
-  // };
+    sendMessage = (message: string) => {
+      // this.props.sendMessage({
+      //   user: this.props.system.userName,
+      //   message: message,
+      //   timestamp: new Date().getTime(),
+      // });
+      // this.setState({ message: '' });
+  };
 
   public render() {
     const { loading, data } = this.props
@@ -109,20 +109,15 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
             <div className={'row'}>
               <TradeWrapper>
                 <div><pre>{JSON.stringify(data, null, 2) }</pre></div>
-                {/*{data.map(trade => (*/}
-                  {/*<TradeItem name={'11212'}*/}
-                             {/*image={'12121'}*/}
-                             {/*amount={trade.bpi.rate_float}*/}
-                             {/*reputationPositive={Buyer.reputationPositive}*/}
-                             {/*reputationNegative={Buyer.reputationNegative}*/}
-                             {/*trades={Buyer.trades}/>*/}
+                {/*@todo */}
+                {/*{data.map(trades => (*/}
+                  {/*<TradeItem*/}
+                    {/*amount={trades.amount}*/}
+                    {/*reputationNegative={trades.reputationNegative}*/}
+                    {/*reputationPositive={trades.reputationPositive}*/}
+                    {/*name={trades.name}*/}
+                    {/*image={trades.image}/>*/}
                 {/*))}*/}
-                {/*<TradeItem name={Buyer.name}*/}
-                           {/*image={Buyer.image}*/}
-                           {/*amount={Buyer.amount}*/}
-                           {/*reputationPositive={Buyer.reputationPositive}*/}
-                           {/*reputationNegative={Buyer.reputationNegative}*/}
-                           {/*trades={Buyer.trades}/>*/}
               </TradeWrapper>
               <TradeChatWrapper>
                 <TradeChatContainer>
@@ -130,12 +125,11 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
                   <div>
                     <ChatHistory messages={[]}/>
                   </div>
-                  {/*<ChatInput*/}
-                    {/*userName={'this.props.system.userName'}*/}
-                    {/*message={'this.props.chatProps.message'}*/}
-                    {/*updateMessage={this.updateMessage}*/}
-                    {/*sendMessage={this.sendMessage}*/}
-                  {/*/>*/}
+                  <ChatInput
+                    userImage={'../'}
+                    message={'todo'}
+                    sendMessage={this.sendMessage}
+                  />
                 </TradeChatContainer>
               </TradeChatWrapper>
               <TradeInformationWrapper>
@@ -170,7 +164,7 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
   }
 }
 
-const mapStateToProps = ({ trades, rate }: ApplicationState) => ({
+const mapStateToTradesProps = ({ trades, rate }: ApplicationState) => ({
   loading: trades.loading,
   errors: trades.errors,
   data: trades.data,
@@ -178,14 +172,12 @@ const mapStateToProps = ({ trades, rate }: ApplicationState) => ({
 })
 
 const mapDispatchToProps = {
-  fetchRequest,
+  fetchRequest: fetchRequest,
 }
 
 // Now let's connect our component!
 // With redux v4's improved typings, we can finally omit generics here.
 export default connect(
-  mapStateToProps,
+  mapStateToTradesProps,
   mapDispatchToProps
 )(TradesPage)
-
-// export default SellPage

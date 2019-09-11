@@ -4,12 +4,12 @@ import './chatInput.scss'
 
 export interface ChatProps {
   message: string;
-  userName: string;
+  userImage: string;
   sendMessage: (message: string) => any;
   // updateMessage: (event: UpdateMessageParam) => void;
 }
 
-export const ChatInput: React.FunctionComponent<ChatProps> = ({ userName, message, sendMessage }) => {
+export const ChatInput: React.FunctionComponent<ChatProps> = ({ userImage, message }) => {
   function keyPress(e: React.KeyboardEvent<any>) {
     if (e.key === 'Enter') {
       send()
@@ -17,13 +17,15 @@ export const ChatInput: React.FunctionComponent<ChatProps> = ({ userName, messag
   }
 
   function send() {
-    sendMessage(message)
+    return
+    // sendMessage(message)
   }
 
   return (
     <div className={'chatInput__wrapper'}>
       <input
-        value={message}
+        // value={message}
+        defaultValue=""
         // onChange={updateMessage}
         onKeyPress={keyPress}
         placeholder="Type a message..."
