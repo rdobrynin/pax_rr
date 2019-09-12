@@ -2,7 +2,6 @@
 export interface Trades extends ApiResponse {
   name: string
   image: string
-  amount: number
   reputationPositive: number
   reputationNegative: number
   trades: Trade[]
@@ -14,6 +13,7 @@ export interface Trade {
   currency: string
   tradeStatus: string
   paymentMethod: string
+  isOpened: boolean
 }
 
 export type ApiResponse = Record<string, any>
@@ -28,6 +28,6 @@ export enum TradesActionTypes {
 
 export interface TradesState {
   readonly loading: boolean
-  data: Trade[]
+  data: Trades
   readonly errors?: string
 }

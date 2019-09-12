@@ -11,13 +11,20 @@ import TradeChatWrapper from '../../components/layout/trade/TradeChatWrapper'
 import TradeInformationWrapper from '../../components/layout/trade/TradeInformationWrapper'
 import { TradeInformation } from '../../components/trade_information/TradeInformation'
 import { TradeReleaseBtc } from '../../components/trade_information/trade_release_btc/TradeReleaseBtc'
-import TradeInformationStatisticsWrapper from '../../components/layout/trade/trade_information_statistcis/TradeInformationStatisticsWrapper'
-import TradeInformationReputationContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationReputationContainer'
-import TradeInformationTradeCounterContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeCounterContainer'
-import TradeInformationTradeStatusContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeStatusContainer'
-import TradeInformationTradeHashContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeHashContainer'
-import TradeInformationTradeAmountContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeAmountContainer'
-import TradeInformationTradeRateContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeRateContainer'
+import TradeInformationStatisticsWrapper
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationStatisticsWrapper'
+import TradeInformationReputationContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationReputationContainer'
+import TradeInformationTradeCounterContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeCounterContainer'
+import TradeInformationTradeStatusContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeStatusContainer'
+import TradeInformationTradeHashContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeHashContainer'
+import TradeInformationTradeAmountContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeAmountContainer'
+import TradeInformationTradeRateContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeRateContainer'
 import { TradeReputation } from '../../components/trade_information/trade_reputation/TradeReputation'
 import { TradeCounter } from '../../components/trade_information/trade_counter/TradeCounter'
 import { TradeStatus } from '../../components/trade_information/trade_status/TradeStatus'
@@ -35,11 +42,12 @@ import { SystemState } from '../../store/system/types'
 import { updateSession } from '../../store/system/actions'
 import { ChatHeaderContainer } from '../../components/chat/chat-header/ChatHeaderContainer'
 import { fetchRequest } from '../../store/trades/actions'
-import { Trade } from '../../store/trades/types'
+import { Trade, Trades } from '../../store/trades/types'
 import { Rate } from '../../store/rate/types'
 import { ApplicationState } from '../../store'
 import { connect } from 'react-redux'
 import LoadingSpinner from '../../components/spinner/Spinner'
+import TradeitemContainer from '../../components/layout/trade/TradeItemContainer'
 
 // interface AppProps {
 //   sendMessage: typeof sendMessage;
@@ -52,7 +60,7 @@ import LoadingSpinner from '../../components/spinner/Spinner'
 
 interface PropsFromTradesState {
   loading: boolean,
-  data: Trade[]
+  data: Trades
   errors?: string
 }
 
@@ -66,18 +74,15 @@ interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest
 }
 
-type TradeProps = PropsFromTradesState & PropsFromDispatch
-type RateProps = PropsFromRateState & PropsFromDispatch
+type TradeProps = PropsFromTradesState&PropsFromDispatch
+type RateProps = PropsFromRateState&PropsFromDispatch
 
 // export type UpdateMessageParam = React.SyntheticEvent<{ value: string }>
 
-const API_RATE_ENDPOINT = process.env.REACT_APP_RATE_ENDPOINT || 'https://api.coindesk.com/v1/bpi/currentprice/USD.json'
-const API_TRADES_ENDPOINT = process.env.REACT_APP_TRADES_ENDPOINT || 'http://webdeveloper.ee/trade.json'
-
-class TradesPage extends React.Component<TradeProps, RateProps> {
+class TradesPage extends React.Component<TradeProps> {
 
   public componentDidMount() {
-    const { fetchRequest: fr } = this.props;
+    const { fetchRequest: fr } = this.props
     fr()
   }
 
@@ -85,14 +90,14 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
   //   this.setState({ message: event.currentTarget.value });
   // };
 
-    sendMessage = (message: string) => {
-      // this.props.sendMessage({
-      //   user: this.props.system.userName,
-      //   message: message,
-      //   timestamp: new Date().getTime(),
-      // });
-      // this.setState({ message: '' });
-  };
+  sendMessage = (message: string) => {
+    // this.props.sendMessage({
+    //   user: this.props.system.userName,
+    //   message: message,
+    //   timestamp: new Date().getTime(),
+    // });
+    // this.setState({ message: '' });
+  }
 
   public render() {
     const { loading, data } = this.props
@@ -108,16 +113,24 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
           <TradePageWrapper className={'trade-wrapper'}>
             <div className={'row'}>
               <TradeWrapper>
-                <div><pre>{JSON.stringify(data, null, 2) }</pre></div>
-                {/*@todo */}
-                {/*{data.map(trades => (*/}
-                  {/*<TradeItem*/}
-                    {/*amount={trades.amount}*/}
-                    {/*reputationNegative={trades.reputationNegative}*/}
-                    {/*reputationPositive={trades.reputationPositive}*/}
-                    {/*name={trades.name}*/}
-                    {/*image={trades.image}/>*/}
-                {/*))}*/}
+                <TradeitemContainer>
+                  {data.trades.map((trade, i) => (
+                    <TradeItem key={i}
+                               trades={data.trades}
+                               name={data.name}
+                               image={data.image}
+                               reputationNegative={data.reputationNegative}
+                               reputationPositive={data.reputationPositive}
+                               hash={trade.hash}
+                               amount={trade.amount}
+                               isOpened={trade.isOpened}
+                               currency={trade.currency}
+                               tradeStatus={trade.tradeStatus}
+                               paymentMethod={trade.paymentMethod}
+                               onClick={trade.hash}
+                    />
+                  ))}
+                </TradeitemContainer>
               </TradeWrapper>
               <TradeChatWrapper>
                 <TradeChatContainer>
@@ -164,12 +177,12 @@ class TradesPage extends React.Component<TradeProps, RateProps> {
   }
 }
 
-const mapStateToTradesProps = ({ trades, rate }: ApplicationState) => ({
+const mapStateToTradesProps = ({ trades, rate }: ApplicationState) => ( {
   loading: trades.loading,
   errors: trades.errors,
   data: trades.data,
   rate: rate.data,
-})
+} )
 
 const mapDispatchToProps = {
   fetchRequest: fetchRequest,

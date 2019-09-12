@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import { TradesState, TradesActionTypes } from './types'
 
 export const initialState: TradesState = {
-  data: [],
+  data: {name: '', image: '', amount: 0, reputationPositive: 0, reputationNegative: 0, trades: [] },
   errors: undefined,
   loading: false,
 }

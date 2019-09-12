@@ -1,7 +1,6 @@
 {
   "name": "Chanaaar",
   "image": "./assets/images/avatar_m.png",
-  "amount": 1230.00,
   "reputationPositive": 23,
   "reputationNegative": -2,
   "trades": [
@@ -10,28 +9,32 @@
       "amount": 25.00,
       "tradeStatus": "NOT PAID",
       "currency": "USD",
-      "paymentMethod": "Amazon Gift Card"
+      "paymentMethod": "Amazon Gift Card",
+      "isOpened": false
     },
     {
       "hash": "41FF3er",
       "amount": 55.00,
       "tradeStatus": "PAID",
       "currency": "USD",
-      "paymentMethod": "PayPal"
+      "paymentMethod": "PayPal",
+      "isOpened": false
     },
     {
       "hash": "12AG4aq",
       "amount": 55.00,
       "tradeStatus": "NOT PAID",
       "currency": "USD",
-      "paymentMethod": "Amazon Gift Card"
+      "paymentMethod": "Amazon Gift Card",
+      "isOpened": false
     },
     {
       "hash": "79SH1xc",
       "amount": 55.00,
       "tradeStatus": "NOT PAID",
       "currency": "USD",
-      "paymentMethod": "iTunes Gift Card"
+      "paymentMethod": "iTunes Gift Card",
+      "isOpened": false
     }
   ]
 }

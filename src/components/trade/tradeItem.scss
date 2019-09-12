@@ -1,145 +1,141 @@
 @import '.././../styles/variables.scss';
 
-.trade-item__container {
-  width: 100%;
+.trade-item__wrapper {
+  border-bottom: 1px solid #D6DBE2;
+  padding: 20px 20px 20px 60px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+  @media only screen and (max-width: 979px) {
+    padding: 20px 20px 20px 40px;
+  }
+  @media only screen and (max-width: 979px) {
+    padding: 20px 40px 20px 60px;
+  }
 
-  .trade-item__wrapper {
-    border-bottom: 1px solid #D6DBE2;
-    padding: 20px 20px 20px 60px;
-    line-height: 1.5;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease-in-out;
-    @media only screen and (max-width: 979px) {
-      padding: 20px 20px 20px 40px;
-    }
-    @media only screen and (max-width: 979px) {
-      padding: 20px 40px 20px 60px;
-    }
+  &.is-active {
+    background-color: $activeTradeBgColor;
+    position: relative;
+    border-top: 1px solid $borderGrayColor;
+    border-bottom: 1px solid $borderGrayColor;
+    margin: -1px -6px 0px 0px;
+    left: 0;
+    padding-left: 60px;
 
-    &.is-active {
+    &:after {
+      content: '';
+      position: absolute;
       background-color: $activeTradeBgColor;
-      position: relative;
-      border-top: 1px solid $borderGrayColor;
-      border-bottom: 1px solid $borderGrayColor;
-      margin: -1px -6px 0px 0px;
-      left: 0;
-      padding-left: 60px;
-
-      &:after {
-        content: '';
-        position: absolute;
-        background-color: $activeTradeBgColor;
-        height: 100%;
-        width: 30px;
-        right: -10px;
-        z-index: 13;
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
-        border-top: 1px solid #D6DBE2;
-        border-bottom: 1px solid #D6DBE2;
-        border-right: 1px solid #D6DBE2;
-      }
-
-      .trade-item__action {
-        color: #575D6C;
-
-        span {
-          font-weight: 400;
-        }
-      }
-
-      .trade-item__payment {
-        font-weight: 400;
-      }
-
-      .trade-item__value {
-        color: black;
-      }
+      height: 100%;
+      width: 30px;
+      right: -10px;
+      z-index: 13;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      border-top: 1px solid #D6DBE2;
+      border-bottom: 1px solid #D6DBE2;
+      border-right: 1px solid #D6DBE2;
     }
 
     .trade-item__action {
-      position: relative;
-      color: $grayTextColor;
-      font-size: 0.9rem;
-      @media only screen and (min-width: 768px) and (max-width: 940px) {
-        font-size: 0.8rem;
-      }
+      color: #575D6C;
 
       span {
-        font-weight: 600;
-      }
-
-      &:before {
-        content: '';
-        border-radius: 0.6rem;
-        height: 0.6rem;
-        width: 0.6rem;
-        margin-right: 0.5rem;
-        background-color: #55D3C3;
-        position: absolute;
-        left: -30px;
-        top: 6px;
+        font-weight: 400;
       }
     }
 
     .trade-item__payment {
-      font-weight: 600;
-      font-size: 1.0rem;
-      @media only screen and (min-width: 768px) and (max-width: 940px) {
-        font-size: 0.9rem;
-      }
+      font-weight: 400;
     }
 
     .trade-item__value {
-      color: $grayTextColor;
+      color: black;
+    }
+  }
+
+  .trade-item__action {
+    position: relative;
+    color: $grayTextColor;
+    font-size: 0.9rem;
+    @media only screen and (min-width: 768px) and (max-width: 940px) {
       font-size: 0.8rem;
     }
 
-    .trade-item__buyer_wrapper {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
+    span {
+      font-weight: 600;
+    }
+
+    &:before {
+      content: '';
+      border-radius: 0.6rem;
+      height: 0.6rem;
+      width: 0.6rem;
+      margin-right: 0.5rem;
+      background-color: #55D3C3;
+      position: absolute;
+      left: -30px;
+      top: 6px;
+    }
+  }
+
+  .trade-item__payment {
+    font-weight: 600;
+    font-size: 1.0rem;
+    @media only screen and (min-width: 768px) and (max-width: 940px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  .trade-item__value {
+    color: $grayTextColor;
+    font-size: 0.8rem;
+  }
+
+  .trade-item__buyer_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 61px;
+
+    .trade-item__buyer {
+      width: 40px;
+      height: 40px;
       align-items: center;
-      width: 61px;
+      background-color: #C6D2E5;
+      border-radius: 50%;
+      background-size: cover;
+      overflow: hidden;
+      margin-bottom: 8px;
 
-      .trade-item__buyer {
-        width: 40px;
-        height: 40px;
-        align-items: center;
-        background-color: #C6D2E5;
-        border-radius: 50%;
-        background-size: cover;
-        overflow: hidden;
-        margin-bottom: 8px;
-
-        img {
-          object-fit: cover;
-          width: 100%;
-          position: relative;
-          height: 100%;
-        }
-      }
-
-      .trade-item__status {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: $textGreen;
-        @media only screen and (min-width: 768px) and (max-width: 940px) {
-          font-size: 0.6rem;
-        }
+      img {
+        object-fit: cover;
+        width: 100%;
+        position: relative;
+        height: 100%;
       }
     }
 
-    &:hover {
-      cursor: pointer;
-      background-color: $activeTradeBgColor;
+    .trade-item__status {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: $textGreen;
+      @media only screen and (min-width: 768px) and (max-width: 940px) {
+        font-size: 0.6rem;
+      }
     }
+  }
 
-    &.is-active {
-      background-color: $activeTradeBgColor;
-    }
+  &:hover {
+    cursor: pointer;
+    background-color: $activeTradeBgColor;
+  }
+
+  &.is-active {
+    background-color: $activeTradeBgColor;
   }
 }
