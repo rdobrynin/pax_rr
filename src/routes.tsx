@@ -15,6 +15,12 @@ const Routes: React.FunctionComponent = () => (
       <Route exact path="/" component={IndexPage}/>
       <Route path="/buy_btc" component={BuyPage}/>
       <Route path="/sell_btc" component={TradesPage}/>
+      <Route path="/sell_btc/trades" component={TradesPage}/>
+      <Route path="/sell_btc/overview" component={TradesPage}/>
+      <Route path="/sell_btc/disputes" component={TradesPage}/>
+      <Route path="/sell_btc/offers" component={TradesPage}/>
+      <Route path="/sell_btc/team" component={TradesPage}/>
+      <Route path="/sell_btc/history" component={TradesPage}/>
       <Route path="/wallet" component={WalletPage}/>
       <Route path="/support" component={SupportPage}/>
       <Route path="/account" component={AccountPage}/>

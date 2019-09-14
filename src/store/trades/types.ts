@@ -13,7 +13,7 @@ export interface Trade {
   currency: string
   tradeStatus: string
   paymentMethod: string
-  isOpened: boolean
+  isOpened: boolean,
 }
 
 export type ApiResponse = Record<string, any>

@@ -13,7 +13,7 @@ export class ChatHeaderContainer extends Component {
         <div className={'chatHeader__wrapper'}>
           <div className={'chatHeader__action'}>
             <button onClick={this.handleClick}>
-              <img src="./assets/images/trash-bin.png" alt="remove"/>
+              <img src={`${process.env.PUBLIC_URL}/assets/images/trash-bin.png`} alt="remove"/>
             </button>
           </div>
           <div className={'chatHeader__header'}>

@@ -1,7 +1,7 @@
 import styled from '../../../utils/styled'
 
-const TradeitemContainer = styled('div')`
+const TradeItemContainer = styled('div')`
     width: 100%;
 `
 
-export default TradeitemContainer
+export default TradeItemContainer

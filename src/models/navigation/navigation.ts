@@ -12,8 +12,9 @@ export interface IHeaderProps {
 
 interface IActionNavLinks {
   title: string;
+  route: string;
 }
 
 export interface IActionNavigationProps {
-  items: IActionNavLinks[];
+  links: IActionNavLinks[]
 }

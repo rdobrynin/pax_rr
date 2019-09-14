@@ -2,8 +2,9 @@ import * as React from 'react'
 import './ActionNavigation.scss'
 import { IActionNavigationProps } from '../../../models/navigation/navigation'
 import Media from 'react-media'
+import { NavLink } from 'react-router-dom'
 
-export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> = ({ items }) => (
+export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> = ({ links }) => (
 
   <React.Fragment>
     <Media query="(max-width: 767px)">
@@ -16,10 +17,11 @@ export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> =
           <div className={'action-navigation'}>
             <nav>
               <ul>
-                {items.map((item, i) => (
-                  // no specs for other pages were assigned;
-                  <li key={i} className={item.title.toLowerCase() === 'trades' ? 'is-active' : ''}>
-                    <div>{item.title}</div>
+                {links.map((link, i) => (
+                  <li key={i}>
+                    <NavLink activeClassName={'is-active'} exact={true} to={link.route}>
+                      <div>{link.title}</div>
+                    </NavLink>
                   </li>
                 ))}
               </ul>

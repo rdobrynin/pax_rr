@@ -1,13 +1,22 @@
 import * as React from 'react'
 import './tradeItem.scss'
 import { Trade, Trades } from '../../store/trades/types'
+import { NavLink } from 'react-router-dom'
 
 export class TradeItem extends React.Component<Trades&Trade> {
 
+  public showTrade = (hash: string) => {
+    console.log(hash)
+  }
+
   render() {
     return (
-      <div>
-        <div className={'trade-item__wrapper'}>
+      <React.Fragment>
+      <nav>
+        <ul>
+        <li className={'trade-item__wrapper'}>
+
+          <NavLink to={`/sell_btc/trades/${this.props.hash}`}>
           <div>
             <div className="trade-item__action">{this.props.name} <span>is buying</span></div>
             <div className={'trade-item__payment'}>{this.props.paymentMethod}</div>
@@ -23,8 +32,11 @@ export class TradeItem extends React.Component<Trades&Trade> {
               {this.props.tradeStatus}
             </div>
           </div>
-        </div>
-      </div>
+          </NavLink>
+        </li>
+        </ul>
+      </nav>
+      </React.Fragment>
     )
   }
 }
