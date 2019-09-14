@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Page from '../../components/layout/Page'
+import { RouteComponentProps } from 'react-router'
 import Container from '../../components/layout/Container'
 import { TopNavigation } from '../../components/layout/top_navigation/TopNavigation'
 import { linksTopNavigation } from '../../data/linksTopNavigation'
@@ -29,8 +30,8 @@ import TradeChatContainer from '../../components/layout/trade/TradeChatContainer
 import { ChatInput } from '../../components/chat/chat-input/ChatInput'
 import { ChatHistory } from '../../components/chat/chat-history/ChatHistory'
 import { ChatHeaderContainer } from '../../components/chat/chat-header/ChatHeaderContainer'
-import { fetchRequest } from '../../store/trades/actions'
-import { Trades } from '../../store/trades/types'
+import { fetchRequest, deleteTrade } from '../../store/trades/actions'
+import { ITrade, ITrades } from '../../store/trades/types'
 import { ApplicationState } from '../../store'
 import { connect } from 'react-redux'
 import LoadingSpinner from '../../components/spinner/Spinner'
@@ -39,17 +40,32 @@ import TradeItemContainer from '../../components/layout/trade/TradeItemContainer
 
 interface PropsFromTradesState {
   loading: boolean,
-  data: Trades
+  data: ITrades
   errors?: string
 }
 
 interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest
+  deleteTrade: typeof deleteTrade
 }
 
-type TradeProps = PropsFromTradesState&PropsFromDispatch
+interface RouteParams {
+  hash: string
+}
 
-class TradesIndexPage extends React.Component<TradeProps> {
+interface State {
+  selected?: ITrade
+}
+
+type TradeProps = PropsFromTradesState&PropsFromDispatch&RouteComponentProps<RouteParams>
+
+class TradesIndexPage extends React.Component<TradeProps, State> {
+
+  constructor(props: TradeProps) {
+    super(props)
+
+    this.state = {}
+  }
 
   public componentDidMount() {
     const { fetchRequest: fr } = this.props
@@ -66,7 +82,8 @@ class TradesIndexPage extends React.Component<TradeProps> {
   }
 
   public render() {
-    const { loading, data } = this.props
+    const { loading, data, match } = this.props
+    const selectedTrade: any = data.trades.find(trades => trades.hash === match.params.hash)
     const isData: boolean = this.props.data.trades.length > 0
     return (
       <Page>
@@ -75,15 +92,24 @@ class TradesIndexPage extends React.Component<TradeProps> {
         )}
         <TopNavigation title={'Paxful'} links={linksTopNavigation}
                        logoImage={`${process.env.PUBLIC_URL}/assets/images/project-logo.png`} imageSize={'137px'}/>
-        <ActionNavigation links={actionsNavigation}/>
+        <ActionNavigation
+          history={this.props.history}
+          location={this.props.location}
+          match={this.props.match}
+          links={actionsNavigation}/>
         {isData ? (
           <Container>
+              {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
             <TradePageWrapper className={'trade-wrapper'}>
               <div className={'row'}>
                 <TradeWrapper>
                   <TradeItemContainer>
                     {data.trades.map((trade, i) => (
                       <TradeItem key={i}
+                                 history={this.props.history}
+                                 location={this.props.location}
+                                 match={this.props.match}
+                                 isActive={trade.hash === match.params.hash}
                                  trades={data.trades}
                                  name={data.name}
                                  image={data.image}
@@ -91,7 +117,6 @@ class TradesIndexPage extends React.Component<TradeProps> {
                                  reputationPositive={data.reputationPositive}
                                  hash={trade.hash}
                                  amount={trade.amount}
-                                 isOpened={trade.isOpened}
                                  currency={trade.currency}
                                  tradeStatus={trade.tradeStatus}
                                  paymentMethod={trade.paymentMethod}
@@ -101,40 +126,53 @@ class TradesIndexPage extends React.Component<TradeProps> {
                 </TradeWrapper>
                 <TradeChatWrapper>
                   <TradeChatContainer>
-                    <ChatHeaderContainer/>
+                    {selectedTrade ? (
+                    <ChatHeaderContainer onClick={console.log(1)} trades={data.trades} name={data.name}
+                      paymentMethod={selectedTrade.paymentMethod}
+                      reputationNegative={data.reputationNegative}
+                      reputationPositive={data.reputationPositive}
+                    />
+                    ) : ('')}
                     <div>
                       <ChatHistory messages={[]}/>
                     </div>
+                    {selectedTrade ? (
                     <ChatInput
                       userImage={'../'}
                       message={'todo'}
                       sendMessage={this.sendMessage}
                     />
+                    ) : ('')}
                   </TradeChatContainer>
                 </TradeChatWrapper>
                 <TradeInformationWrapper>
-                  <TradeInformation/>
+                  <TradeInformation isTrade={selectedTrade} name={data.name}/>
                   <TradeReleaseBtc/>
+                  {selectedTrade ? (
                   <TradeInformationStatisticsWrapper className={'grid'}>
                     <TradeInformationReputationContainer>
-                      <TradeReputation/>
+                      <TradeReputation
+                        reputationNegative={data.reputationNegative}
+                        reputationPositive={data.reputationPositive}
+                      />
                     </TradeInformationReputationContainer>
                     <TradeInformationTradeCounterContainer>
-                      <TradeCounter/>
+                      <TradeCounter total={data.trades.length}/>
                     </TradeInformationTradeCounterContainer>
                     <TradeInformationTradeStatusContainer>
-                      <TradeStatus/>
+                      <TradeStatus status={selectedTrade.tradeStatus}/>
                     </TradeInformationTradeStatusContainer>
                     <TradeInformationTradeHashContainer>
-                      <TradeHash/>
+                      <TradeHash hash={selectedTrade.hash} />
                     </TradeInformationTradeHashContainer>
                     <TradeInformationTradeAmountContainer>
-                      <TradeAmount/>
+                      <TradeAmount amount={selectedTrade.amount}/>
                     </TradeInformationTradeAmountContainer>
                     <TradeInformationTradeRateContainer>
                       <TradeRate/>
                     </TradeInformationTradeRateContainer>
                   </TradeInformationStatisticsWrapper>
+                    ) : ('')}
                 </TradeInformationWrapper>
               </div>
             </TradePageWrapper>

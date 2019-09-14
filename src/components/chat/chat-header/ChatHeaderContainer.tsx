@@ -1,7 +1,14 @@
 import React, { Component, MouseEvent } from 'react'
 import './ChatHeaderContainer.scss'
+import { ITradeHeader, ITrades } from '../../../store/trades/types'
+import { deleteTrade } from '../../../store/trades/actions'
 
-export class ChatHeaderContainer extends Component {
+interface PropsFromDispatch {
+  deleteTrade: typeof deleteTrade
+}
+
+export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades> {
+
   handleClick(event: MouseEvent) {
     event.preventDefault()
     alert(event.currentTarget.tagName)
@@ -17,8 +24,10 @@ export class ChatHeaderContainer extends Component {
             </button>
           </div>
           <div className={'chatHeader__header'}>
-            <div className={'chatHeader__title'}>Amazon Gift Card</div>
-            <div className={'chatHeader__value'}>Chanaaar <span>+37</span> / <span>-1</span></div>
+            <div className={'chatHeader__title'}>{this.props.paymentMethod}</div>
+            <div className={'chatHeader__value'}>{this.props.name}&nbsp;
+              <span>+{this.props.reputationPositive}</span>&nbsp;/&nbsp;<span>-{this.props.reputationNegative}</span>
+            </div>
           </div>
         </div>
       </React.Fragment>

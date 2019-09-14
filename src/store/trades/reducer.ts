@@ -18,6 +18,13 @@ const reducer: Reducer<TradesState> = (state = initialState, action) => {
     case TradesActionTypes.FETCH_ERROR: {
       return { ...state, loading: false, errors: action.payload }
     }
+    case TradesActionTypes.UPDATE_TRADE: {
+      // @todo
+      return { ...state, loading: false, data: action.payload }
+    }
+    case TradesActionTypes.DELETE_TRADE: {
+      return { ...state, loading: false, data: state.data.trades.filter(item => item !== action.payload)}
+    }
     default: {
       return state
     }

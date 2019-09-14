@@ -1,27 +1,31 @@
 import * as React from 'react'
 import './tradeItem.scss'
-import { Trade, Trades } from '../../store/trades/types'
+import { ITrade, ITrades } from '../../store/trades/types'
 import { NavLink } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router'
 
-export class TradeItem extends React.Component<Trades&Trade> {
+interface RouteParams {
+  hash: string
+}
 
-  public showTrade = (hash: string) => {
-    console.log(hash)
-  }
-
+export class TradeItem extends React.Component<ITrades&ITrade&RouteComponentProps<RouteParams>> {
   render() {
+    const { data, match } = this.props
+    const isSelected: boolean  = this.props.hash === match.params.hash;
     return (
       <React.Fragment>
       <nav>
         <ul>
-        <li className={'trade-item__wrapper'}>
-
+          {/*<pre>{JSON.stringify(this.props, null, 2)}</pre>*/}
+          {/*@todo*/}
+        <li className={'trade-item__wrapper ' + (this.props.isActive ? 'is-active' : '') }>
           <NavLink to={`/sell_btc/${this.props.hash}`}>
           <div>
-            <div className="trade-item__action">{this.props.name} <span>is buying</span></div>
+            <div className={'trade-item__action ' + (isSelected ? 'is-selected' : '') }>
+              {this.props.name}&nbsp;<span>is buying</span></div>
             <div className={'trade-item__payment'}>{this.props.paymentMethod}</div>
             <div className={'trade-item__value'}>
-              {this.props.currency} (0.0025893 BTC)
+              {this.props.amount} {this.props.currency}&nbsp;(0.0025893 BTC)
             </div>
           </div>
           <div className={'trade-item__buyer_wrapper'}>

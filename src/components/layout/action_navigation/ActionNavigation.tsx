@@ -3,32 +3,41 @@ import './ActionNavigation.scss'
 import { IActionNavigationProps } from '../../../models/navigation/navigation'
 import Media from 'react-media'
 import { NavLink } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router'
 
-export const ActionNavigation: React.FunctionComponent<IActionNavigationProps> = ({ links }) => (
+interface RouteParams {
+  hash: string
+}
 
-  <React.Fragment>
-    <Media query="(max-width: 767px)">
-      {matches =>
-        matches ? (
-          // @todo implement mobile layout
-          <div></div>
-        ) : (
+export class ActionNavigation extends React.Component<IActionNavigationProps&RouteComponentProps<RouteParams>> {
+  render() {
+    const {links, match } = this.props
+    return (
+      <React.Fragment>
+        <Media query="(max-width: 767px)">
+          {matches =>
+            matches ? (
+              // @todo implement mobile layout
+              <div></div>
+            ) : (
 
-          <div className={'action-navigation'}>
-            <nav>
-              <ul>
-                {links.map((link, i) => (
-                  <li key={i}>
-                    <NavLink activeClassName={'is-active'} exact={true} to={link.route}>
-                      <div>{link.title}</div>
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        )
-      }
-    </Media>
-  </React.Fragment>
-)
+              <div className={'action-navigation'}>
+                <nav>
+                  <ul>
+                    {links.map((link, i) => (
+                      <li key={i}>
+                        <NavLink activeClassName={'is-active'} exact={true} to={link.route}>
+                          <div>{link.title}</div>
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            )
+          }
+        </Media>
+      </React.Fragment>
+    )
+  }
+}

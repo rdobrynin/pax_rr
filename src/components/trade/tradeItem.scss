@@ -8,7 +8,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease-in-out;
   @media only screen and (max-width: 979px) {
     padding: 20px 20px 20px 40px;
   }
@@ -46,10 +45,10 @@
     }
 
     .trade-item__action {
-      color: #575D6C;
+      color: #5c7394;
 
       span {
-        font-weight: 400;
+        font-weight: 600;
       }
     }
 
@@ -94,6 +93,11 @@
         position: absolute;
         left: -30px;
         top: 6px;
+      }
+      &.is-selected {
+        &:before {
+          background-color: #e2e2e2;
+        }
       }
     }
 

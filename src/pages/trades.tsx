@@ -1,14 +1,13 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, Route, Switch } from 'react-router-dom'
-import { Trades } from '../store/trades/types'
+import { ITrades } from '../store/trades/types'
 import TradesIndexPage from './trades/index'
-import ShowTradesPage from './trades/show'
 import { ApplicationState } from '../store'
 
 interface PropsFromState {
   loading: boolean
-  data: Trades
+  data: ITrades
   errors?: string
 }
 
@@ -23,7 +22,7 @@ const TradesPage: React.FC<AllProps> = ({ match }) => {
       <Route exact path={`${match.path}/team`} component={TradesIndexPage} />
       <Route exact path={`${match.path}/trades`} component={TradesIndexPage} />
       <Route exact path={`${match.path}/history`} component={TradesIndexPage} />
-      <Route path={`${match.path}/:hash`} component={ShowTradesPage} />
+      <Route path={`${match.path}/:hash`} component={TradesIndexPage} />
     </Switch>
   )
 

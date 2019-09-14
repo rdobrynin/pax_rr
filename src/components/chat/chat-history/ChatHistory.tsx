@@ -11,7 +11,7 @@ export const ChatHistory: React.FunctionComponent<ChatHistoryProps> = ({ message
     <ul>
       <li className="chat-history__clearfix to-message">
         <div className="chat-history__message">
-          Are we meeting today? Project has been already finished and I have results to show you.
+          Please choose trade from left sidebar to see the chat.
         </div>
         <div className="chat-history__details">
           <span className="chat-history__time">10:12 AM</span>

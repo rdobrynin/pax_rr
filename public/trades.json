@@ -2,7 +2,7 @@
   "name": "Chanaaar",
   "image": "http://localhost:5555/assets/images/avatar_m.png",
   "reputationPositive": 23,
-  "reputationNegative": -2,
+  "reputationNegative": 2,
   "trades": [
     {
       "hash": "45FD3Rr",
