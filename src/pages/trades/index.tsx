@@ -52,7 +52,8 @@ type TradeProps = PropsFromTradesState&PropsFromDispatch
 class TradesIndexPage extends React.Component<TradeProps> {
 
   public componentDidMount() {
-    this.props.fetchRequest()
+    const { fetchRequest: fr } = this.props
+    fr()
   }
 
   sendMessage = (message: string) => {

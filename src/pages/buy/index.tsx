@@ -18,7 +18,7 @@ export default function BuyPage() {
       <Container>
         <div className={'temp'}>
           <TempLink key={0} exact to={'/sell_btc'}>
-            Go to Sell Page or Navigate from top navigation bar
+            Go to Sell Bitcoins Page or Navigate from top navigation bar
           </TempLink>
         </div>
       </Container>

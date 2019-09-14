@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './chatInput.scss'
-// import { UpdateMessageParam } from '../../../pages/sell'
+// import { UpdateMessageParam } from '../../../pages/trades'
 
 export interface ChatProps {
   message: string;

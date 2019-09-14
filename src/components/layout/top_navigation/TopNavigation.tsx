@@ -40,7 +40,7 @@ export const TopNavigation: React.FunctionComponent<IHeaderProps> = ({ title, li
             <nav>
               <ul>
                 {links.map((link, i) => (
-                  <HeaderNavLink key={i} exact to={link.route + '/trades'} activeClassName="is-active">
+                  <HeaderNavLink key={i} exact to={link.route} activeClassName="is-active">
                     {link.title}
                   </HeaderNavLink>
                 ))}

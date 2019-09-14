@@ -2,8 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, Route, Switch } from 'react-router-dom'
 import { Trades } from '../store/trades/types'
-// import { TradesIndexPage } from './sell/index'
-import ShowTradesPage from './sell/show'
+import TradesIndexPage from './trades/index'
+import ShowTradesPage from './trades/show'
 import { ApplicationState } from '../store'
 
 interface PropsFromState {
@@ -17,7 +17,12 @@ const TradesPage: React.FC<AllProps> = ({ match }) => {
 
   return (
     <Switch>
-      {/*<Route exact path={`${match.path}/`} component={TradesIndexPage} />*/}
+      <Route exact path={`${match.path}/`} component={TradesIndexPage} />
+      <Route exact path={`${match.path}/disputes`} component={TradesIndexPage} />
+      <Route exact path={`${match.path}/offers`} component={TradesIndexPage} />
+      <Route exact path={`${match.path}/team`} component={TradesIndexPage} />
+      <Route exact path={`${match.path}/trades`} component={TradesIndexPage} />
+      <Route exact path={`${match.path}/history`} component={TradesIndexPage} />
       <Route path={`${match.path}/:hash`} component={ShowTradesPage} />
     </Switch>
   )

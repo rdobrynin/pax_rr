@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Root from './components/layout/Root';
 import IndexPage from './pages/index';
 import BuyPage from './pages/buy';
-import TradesPage from './pages/sell';
+import TradesPage from './pages/trades';
 import WalletPage from './pages/wallet';
 import SupportPage from './pages/support';
 import AccountPage from './pages/account';
@@ -15,7 +15,7 @@ const Routes: React.FunctionComponent = () => (
       <Route exact path="/" component={IndexPage}/>
       <Route path="/buy_btc" component={BuyPage}/>
       <Route path="/sell_btc" component={TradesPage}/>
-      <Route path="/sell_btc/trades" component={TradesPage}/>
+      <Route path="/sell_btc/trades/" component={TradesPage}/>
       <Route path="/sell_btc/overview" component={TradesPage}/>
       <Route path="/sell_btc/disputes" component={TradesPage}/>
       <Route path="/sell_btc/offers" component={TradesPage}/>

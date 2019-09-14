@@ -3,7 +3,7 @@ import { TradesActionTypes } from './types'
 import { fetchError, fetchSuccess } from './actions'
 import { callApi } from '../../utils/api'
 
-const API_ENDPOINT = 'http://localhost:5555/'
+const API_ENDPOINT = `${process.env.PUBLIC_URL}`
 
 function* handleFetch() {
   try {
