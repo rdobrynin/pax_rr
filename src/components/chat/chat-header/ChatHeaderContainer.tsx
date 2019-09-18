@@ -1,17 +1,11 @@
-import React, { Component, MouseEvent } from 'react'
+import React from 'react'
 import './ChatHeaderContainer.scss'
 import { ITradeHeader, ITrades } from '../../../store/trades/types'
-import { deleteTrade } from '../../../store/trades/actions'
-
-interface PropsFromDispatch {
-  deleteTrade: typeof deleteTrade
-}
 
 export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades> {
 
-  handleClick(event: MouseEvent) {
-    event.preventDefault()
-    alert(event.currentTarget.tagName)
+  static removeTrade() {
+    // @todo dispatch
   }
 
   render() {
@@ -19,7 +13,7 @@ export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades> {
       <React.Fragment>
         <div className={'chatHeader__wrapper'}>
           <div className={'chatHeader__action'}>
-            <button onClick={this.handleClick}>
+            <button onClick={ChatHeaderContainer.removeTrade}>
               <img src={`${process.env.PUBLIC_URL}/assets/images/trash-bin.png`} alt="remove"/>
             </button>
           </div>

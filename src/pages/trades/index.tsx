@@ -12,13 +12,20 @@ import TradeChatWrapper from '../../components/layout/trade/TradeChatWrapper'
 import TradeInformationWrapper from '../../components/layout/trade/TradeInformationWrapper'
 import { TradeInformation } from '../../components/trade_information/TradeInformation'
 import { TradeReleaseBtc } from '../../components/trade_information/trade_release_btc/TradeReleaseBtc'
-import TradeInformationStatisticsWrapper from '../../components/layout/trade/trade_information_statistcis/TradeInformationStatisticsWrapper'
-import TradeInformationReputationContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationReputationContainer'
-import TradeInformationTradeCounterContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeCounterContainer'
-import TradeInformationTradeStatusContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeStatusContainer'
-import TradeInformationTradeHashContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeHashContainer'
-import TradeInformationTradeAmountContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeAmountContainer'
-import TradeInformationTradeRateContainer from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeRateContainer'
+import TradeInformationStatisticsWrapper
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationStatisticsWrapper'
+import TradeInformationReputationContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationReputationContainer'
+import TradeInformationTradeCounterContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeCounterContainer'
+import TradeInformationTradeStatusContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeStatusContainer'
+import TradeInformationTradeHashContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeHashContainer'
+import TradeInformationTradeAmountContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeAmountContainer'
+import TradeInformationTradeRateContainer
+  from '../../components/layout/trade/trade_information_statistcis/TradeInformationTradeRateContainer'
 import { TradeReputation } from '../../components/trade_information/trade_reputation/TradeReputation'
 import { TradeCounter } from '../../components/trade_information/trade_counter/TradeCounter'
 import { TradeStatus } from '../../components/trade_information/trade_status/TradeStatus'
@@ -31,22 +38,28 @@ import { ChatInput } from '../../components/chat/chat-input/ChatInput'
 import { ChatHistory } from '../../components/chat/chat-history/ChatHistory'
 import { ChatHeaderContainer } from '../../components/chat/chat-header/ChatHeaderContainer'
 import { fetchRequest, deleteTrade } from '../../store/trades/actions'
+import { fetchRateRequest } from '../../store/rate/actions'
+import { updateSidebar } from '../../store/layout'
 import { ITrade, ITrades } from '../../store/trades/types'
 import { ApplicationState } from '../../store'
 import { connect } from 'react-redux'
 import LoadingSpinner from '../../components/spinner/Spinner'
 import Alert from '../../components/layout/Alert'
 import TradeItemContainer from '../../components/layout/trade/TradeItemContainer'
+import { IRate } from '../../store/rate/types'
 
 interface PropsFromTradesState {
   loading: boolean,
   data: ITrades
+  rate: IRate
   errors?: string
 }
 
 interface PropsFromDispatch {
   fetchRequest: typeof fetchRequest
+  fetchRateRequest: typeof fetchRateRequest
   deleteTrade: typeof deleteTrade
+  updateSidebar: typeof updateSidebar
 }
 
 interface RouteParams {
@@ -68,29 +81,27 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
   }
 
   public componentDidMount() {
-    const { fetchRequest: fr } = this.props
+    const { fetchRequest: ft } = this.props
+    ft()
+    const { fetchRateRequest: fr } = this.props
     fr()
   }
 
   sendMessage = (message: string) => {
-    // this.props.sendMessage({
-    //   user: this.props.system.userName,
-    //   message: message,
-    //   timestamp: new Date().getTime(),
-    // });
-    // this.setState({ message: '' });
+    //  @todo dispatch
   }
 
   public render() {
-    const { loading, data, match } = this.props
+    const { loading, data, match, rate } = this.props
     const selectedTrade: any = data.trades.find(trades => trades.hash === match.params.hash)
+    const currentRate: IRate = rate
     const isData: boolean = this.props.data.trades.length > 0
     return (
       <Page>
         {loading && data.length === 0 && (
           <LoadingSpinner/>
         )}
-        <TopNavigation title={'Paxful'} links={linksTopNavigation}
+        <TopNavigation title={'Paxful'} links={linksTopNavigation} isOpen={false}
                        logoImage={`${process.env.PUBLIC_URL}/assets/images/project-logo.png`} imageSize={'137px'}/>
         <ActionNavigation
           history={this.props.history}
@@ -99,13 +110,15 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
           links={actionsNavigation}/>
         {isData ? (
           <Container>
-              {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
+            {/*<pre>{JSON.stringify(this.props.rate.bpi.USD, null, 2)}</pre>*/}
             <TradePageWrapper className={'trade-wrapper'}>
               <div className={'row'}>
                 <TradeWrapper>
                   <TradeItemContainer>
                     {data.trades.map((trade, i) => (
                       <TradeItem key={i}
+                                 bpi={currentRate.bpi}
+                                 chat={trade.chat}
                                  history={this.props.history}
                                  location={this.props.location}
                                  match={this.props.match}
@@ -117,7 +130,6 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                                  reputationPositive={data.reputationPositive}
                                  hash={trade.hash}
                                  amount={trade.amount}
-                                 currency={trade.currency}
                                  tradeStatus={trade.tradeStatus}
                                  paymentMethod={trade.paymentMethod}
                       />
@@ -127,52 +139,57 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                 <TradeChatWrapper>
                   <TradeChatContainer>
                     {selectedTrade ? (
-                    <ChatHeaderContainer onClick={console.log(1)} trades={data.trades} name={data.name}
-                      paymentMethod={selectedTrade.paymentMethod}
-                      reputationNegative={data.reputationNegative}
-                      reputationPositive={data.reputationPositive}
-                    />
-                    ) : ('')}
+                      <ChatHeaderContainer trades={data.trades} trade={selectedTrade} name={data.name}
+                                           paymentMethod={selectedTrade.paymentMethod}
+                                           reputationNegative={data.reputationNegative}
+                                           reputationPositive={data.reputationPositive}
+                      />
+                    ) : ( '' )}
                     <div>
                       <ChatHistory messages={[]}/>
                     </div>
                     {selectedTrade ? (
-                    <ChatInput
-                      userImage={'../'}
-                      message={'todo'}
-                      sendMessage={this.sendMessage}
-                    />
-                    ) : ('')}
+                      <ChatInput
+                        userImage={'../'}
+                        message={'todo'}
+                        sendMessage={this.sendMessage}
+                      />
+                    ) : ( '' )}
                   </TradeChatContainer>
                 </TradeChatWrapper>
                 <TradeInformationWrapper>
                   <TradeInformation isTrade={selectedTrade} name={data.name}/>
                   <TradeReleaseBtc/>
                   {selectedTrade ? (
-                  <TradeInformationStatisticsWrapper className={'grid'}>
-                    <TradeInformationReputationContainer>
-                      <TradeReputation
-                        reputationNegative={data.reputationNegative}
-                        reputationPositive={data.reputationPositive}
-                      />
-                    </TradeInformationReputationContainer>
-                    <TradeInformationTradeCounterContainer>
-                      <TradeCounter total={data.trades.length}/>
-                    </TradeInformationTradeCounterContainer>
-                    <TradeInformationTradeStatusContainer>
-                      <TradeStatus status={selectedTrade.tradeStatus}/>
-                    </TradeInformationTradeStatusContainer>
-                    <TradeInformationTradeHashContainer>
-                      <TradeHash hash={selectedTrade.hash} />
-                    </TradeInformationTradeHashContainer>
-                    <TradeInformationTradeAmountContainer>
-                      <TradeAmount amount={selectedTrade.amount}/>
-                    </TradeInformationTradeAmountContainer>
-                    <TradeInformationTradeRateContainer>
-                      <TradeRate/>
-                    </TradeInformationTradeRateContainer>
-                  </TradeInformationStatisticsWrapper>
-                    ) : ('')}
+                    <TradeInformationStatisticsWrapper className={'grid'}>
+                      <TradeInformationReputationContainer>
+                        <TradeReputation
+                          reputationNegative={data.reputationNegative}
+                          reputationPositive={data.reputationPositive}
+                        />
+                      </TradeInformationReputationContainer>
+                      <TradeInformationTradeCounterContainer>
+                        <TradeCounter total={data.trades.length}/>
+                      </TradeInformationTradeCounterContainer>
+                      <TradeInformationTradeStatusContainer>
+                        <TradeStatus status={selectedTrade.tradeStatus}/>
+                      </TradeInformationTradeStatusContainer>
+                      <TradeInformationTradeHashContainer>
+                        <TradeHash hash={selectedTrade.hash}/>
+                      </TradeInformationTradeHashContainer>
+                      <TradeInformationTradeAmountContainer>
+                        <TradeAmount
+                          bpi={currentRate.bpi}
+                          amount={selectedTrade.amount}/>
+                      </TradeInformationTradeAmountContainer>
+                      <TradeInformationTradeRateContainer>
+                        <TradeRate
+                          amount={selectedTrade.amount}
+                          bpi={currentRate.bpi}
+                        />
+                      </TradeInformationTradeRateContainer>
+                    </TradeInformationStatisticsWrapper>
+                  ) : ( '' )}
                 </TradeInformationWrapper>
               </div>
             </TradePageWrapper>
@@ -183,17 +200,19 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
   }
 }
 
-const mapStateToTradesProps = ({ trades }: ApplicationState) => ( {
+const mapStateToProps = ({ trades, rate }: ApplicationState) => ( {
   loading: trades.loading,
   errors: trades.errors,
   data: trades.data,
+  rate: rate.data
 } )
 
 const mapDispatchToProps = {
   fetchRequest: fetchRequest,
+  fetchRateRequest: fetchRateRequest
 }
 
 export default connect(
-  mapStateToTradesProps,
+  mapStateToProps,
   mapDispatchToProps
 )(TradesIndexPage)

@@ -12,7 +12,7 @@ const TempLink = styled(NavLink)`
 export default function AccountPage() {
   return (
     <Page>
-      <TopNavigation title={'Paxful'} links={linksTopNavigation}
+      <TopNavigation title={'Paxful'} links={linksTopNavigation} isOpen={false}
                      logoImage={'./assets/images/project-logo.png'} imageSize={'137px'}/>
       <Container>
         <div className={'temp'}>

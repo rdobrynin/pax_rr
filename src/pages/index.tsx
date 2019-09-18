@@ -14,7 +14,8 @@ const TempLink = styled(NavLink)`
 function IndexPage() {
   return (
     <Page>
-      <TopNavigation title={'Paxful'} links={linksTopNavigation} logoImage={'./assets/images/project-logo.png'}
+      <TopNavigation title={'Paxful'} links={linksTopNavigation} isOpen={false}
+                     logoImage={'./assets/images/project-logo.png'}
                      imageSize={'137px'}/>
       <Container>
         <div className={'temp'}>

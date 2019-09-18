@@ -1,7 +1,7 @@
 import { action } from 'typesafe-actions'
-import { RateActionTypes, Rate } from './types'
+import { RateActionTypes, IRate } from './types'
 
-export const fetchRequest = () => action(RateActionTypes.FETCH_REQUEST)
+export const fetchRateRequest = () => action(RateActionTypes.FETCH_REQUEST)
 
-export const fetchSuccess = (data: Rate) => action(RateActionTypes.FETCH_SUCCESS, data)
-export const fetchError = (message: string) => action(RateActionTypes.FETCH_ERROR, message)
+export const fetchRateSuccess = (rate: IRate) => action(RateActionTypes.FETCH_SUCCESS, rate)
+export const fetchRateError = (message: string) => action(RateActionTypes.FETCH_ERROR, message)

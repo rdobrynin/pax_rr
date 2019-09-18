@@ -1,26 +1,26 @@
 export const actionsNavigation = [
   {
     title: 'Overview',
-    route: '#',
+    route: '#'
   },
   {
     title: 'Trades',
-    route: '/sell_btc',
+    route: '/sell_btc'
   },
   {
     title: 'Disputes',
-    route: '#',
+    route: '#'
   },
   {
     title: 'Your offers',
-    route: '#',
+    route: '#'
   },
   {
     title: 'My team',
-    route: '#',
+    route: '#'
   },
   {
     title: 'Trade History',
-    route: '#',
-  },
-];
+    route: '#'
+  }
+]

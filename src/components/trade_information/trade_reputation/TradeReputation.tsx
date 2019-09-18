@@ -1,6 +1,7 @@
-import * as React from 'react';
-import './tradeReputation.scss';
+import * as React from 'react'
+import './tradeReputation.scss'
 import { ITradeReputation } from '../../../store/trades/types'
+
 export class TradeReputation extends React.Component<ITradeReputation> {
   render() {
     return (

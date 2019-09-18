@@ -11,7 +11,7 @@ interface RouteParams {
 
 export class ActionNavigation extends React.Component<IActionNavigationProps&RouteComponentProps<RouteParams>> {
   render() {
-    const {links, match } = this.props
+    const {links } = this.props
     return (
       <React.Fragment>
         <Media query="(max-width: 767px)">

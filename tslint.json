@@ -34,7 +34,7 @@
     "no-console": [false],
     "no-angle-bracket-type-assertion": false,
     "trailing-comma": [
-      true,
+      false,
       {
         "singleline": "never",
         "multiline": {

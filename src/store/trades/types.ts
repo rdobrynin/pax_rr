@@ -1,4 +1,3 @@
-
 export interface ITrades extends ApiResponse {
   readonly name: string
   readonly image?: string
@@ -10,14 +9,19 @@ export interface ITrades extends ApiResponse {
 export interface ITrade {
   readonly hash?: string
   amount: number
-  currency: string
   tradeStatus: string
   paymentMethod: string
   isActive: boolean
+  chat: IChat
 }
 
 export interface ITotalTrades {
   total: number
+}
+
+export interface IChat {
+  isRead: boolean,
+  messages: string[],
 }
 
 export interface ITradeStatus {

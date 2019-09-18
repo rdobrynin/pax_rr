@@ -1,14 +1,24 @@
-export interface Rate extends ApiResponse {
-  time: string
-  disclaimer: string
-  bpi: USD
+export interface IRate extends ApiResponse {
+  time?: ITime
+  disclaimer?: string
+  bpi: IBpiData
 }
 
-interface USD {
+export interface IBpiData {
+  USD: IUSD
+}
+
+export interface IUSD {
   code: string
-  rate: number
-  description: string
+  description?: string
+  rate?: string
   rate_float: number
+}
+
+export interface ITime {
+  updated: Date,
+  updatedISO: Date,
+  updateduk: Date,
 }
 
 export type ApiResponse = Record<string, any>
@@ -17,11 +27,10 @@ export enum RateActionTypes {
   FETCH_REQUEST = '@@rate/FETCH_REQUEST',
   FETCH_SUCCESS = '@@rate/FETCH_SUCCESS',
   FETCH_ERROR = '@@rate/FETCH_ERROR',
-  SELECTED = '@@rate/SELECTED',
 }
 
 export interface RateState {
   readonly loading: boolean
-  readonly data: Rate[]
+  data: IRate
   readonly errors?: string
 }

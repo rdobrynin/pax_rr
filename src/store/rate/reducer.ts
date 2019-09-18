@@ -2,9 +2,24 @@ import { Reducer } from 'redux'
 import { RateState, RateActionTypes } from './types'
 
 export const initialState: RateState = {
-  data: [],
+  data: {
+    time: {
+      updated: new Date(),
+      updatedISO: new Date(),
+      updateduk: new Date()
+    },
+    disclaimer: '',
+    bpi: {
+      USD: {
+        code: '',
+        rate: '',
+        description: '',
+        rate_float: 0
+      }
+    }
+  },
   errors: undefined,
-  loading: false,
+  loading: false
 }
 
 const reducer: Reducer<RateState> = (state = initialState, action) => {

@@ -1,22 +1,22 @@
 export const linksTopNavigation = [
   {
     title: 'Buy bitcoins',
-    route: '/buy_btc',
+    route: '/buy_btc'
   },
   {
     title: 'Sell bitcoins',
-    route: '/sell_btc',
+    route: '/sell_btc'
   },
   {
     title: 'Wallet',
-    route: '/wallet',
+    route: '/wallet'
   },
   {
     title: 'Support',
-    route: '/support',
+    route: '/support'
   },
   {
     title: 'Account',
-    route: '/account',
-  },
-];
+    route: '/account'
+  }
+]

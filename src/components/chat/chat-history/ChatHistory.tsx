@@ -17,18 +17,17 @@ export const ChatHistory: React.FunctionComponent<ChatHistoryProps> = ({ message
           <span className="chat-history__time">10:12 AM</span>
         </div>
       </li>
-        {messages.map(message => (
-          <li className="chat-history__clearfix from-message" key={message.timestamp}>
-            <h3>From: {message.user}</h3>
-            <div className="chat-history__message">
+      {messages.map(message => (
+        <li className="chat-history__clearfix from-message" key={message.timestamp}>
+          <h3>From: {message.user}</h3>
+          <div className="chat-history__message">
             {message.message}
             <div className="chat-history__details">
             </div>
-              <span className="chat-history__time">{message.timestamp}</span>
-            </div>
-          </li>
-        ))}
+            <span className="chat-history__time">{message.timestamp}</span>
+          </div>
+        </li>
+      ))}
     </ul>
-
   </div>
 )
