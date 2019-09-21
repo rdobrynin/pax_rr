@@ -28,25 +28,32 @@ export class TradeItem extends React.Component<IRate&TradeProps, State> {
   }
 
   public UNSAFE_componentWillMount() {
-    const isSelected: boolean = this.props.hash === this.props.match.params.hash
-    if (isSelected) {
+    if (this.props.hash === this.props.match.params.hash) {
       this.setState({ selected: this.props.chat.isRead = true })
     }
   }
 
+  componentDidUpdate(prevProps: TradeProps) {
+    if (this.props.location !== prevProps.location) {
+      const isSelected: boolean = this.props.hash === this.props.match.params.hash
+      if (isSelected) {
+        this.setState({ selected: this.props.chat.isRead = true })
+      }
+
+    }
+  }
+
   render() {
-    const { match } = this.props
-    const isSelected: boolean = this.props.hash === match.params.hash
     return (
       <React.Fragment>
         <nav>
           <ul>
-            {/*<pre>{JSON.stringify(this.props.chat, null, 2)}</pre>*/}
+            {/*<pre>{JSON.stringify(this.props, null, 2)}</pre>*/}
             {/*@todo*/}
             <li className={'trade-item__wrapper ' + ( this.props.isActive ? 'is-active' : '' )}>
               <NavLink to={`/sell_btc/${this.props.hash}`}>
                 <div>
-                  <div className={'trade-item__action ' + ( isSelected ? 'is-selected' : '' )}>
+                  <div className={'trade-item__action ' + ( this.props.chat.isRead ? 'is-selected' : '' )}>
                     {this.props.name}&nbsp;<span>{Constants.trade.isBuyingTitle}</span></div>
                   <div className={'trade-item__payment'}>{this.props.paymentMethod}</div>
                   <div className={'trade-item__value'}>

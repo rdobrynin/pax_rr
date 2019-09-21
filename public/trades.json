@@ -12,7 +12,14 @@
       "paymentMethod": "Amazon Gift Card",
       "chat": {
         "isRead": false,
-        "messages": []
+        "items": [
+          {
+            "comment": "Hi folks!",
+            "time": "2019-09-17T08:37:00+00:00",
+            "isBuyer": true,
+            "image": "http://localhost:5555/assets/images/avatar_m.png"
+          }
+        ]
       }
     },
     {
@@ -23,7 +30,32 @@
       "paymentMethod": "PayPal",
       "chat": {
         "isRead": false,
-        "messages": []
+        "items": [
+          {
+              "comment": "Sed ut perspiciatis omnis iste natus error sit voluptatem accusantium doloremque laudantium. All the Lorem Ipsum generators on the ...",
+              "time": "2019-09-17T08:37:00+00:00",
+              "isBuyer": true,
+              "image": "http://localhost:5555/assets/images/avatar_m.png"
+          },
+          {
+            "comment": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+            "time": "2019-09-17T08:38:00+00:00",
+            "isBuyer": false,
+            "image": "http://localhost:5555/assets/images/avatar_w.png"
+          },
+          {
+            "comment": "Got it. Thank you.",
+            "time": "2019-09-17T08:39:00+00:00",
+            "isBuyer": true,
+            "image": "http://localhost:5555/assets/images/avatar_m.png"
+          },
+          {
+            "comment": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks",
+            "time": "2019-09-17T08:48:00+00:00",
+            "isBuyer": false,
+            "image": "http://localhost:5555/assets/images/avatar_w.png"
+          }
+        ]
       }
     },
     {
@@ -34,7 +66,20 @@
       "paymentMethod": "Amazon Gift Card",
       "chat": {
         "isRead": false,
-        "messages": []
+        "items": [
+          {
+            "comment": "Sed ut perspiciatis omnis iste natus error sit voluptatem accusantium doloremque laudantium",
+            "time": "2019-09-17T08:37:00+00:00",
+            "isBuyer": true,
+            "image": "http://localhost:5555/assets/images/avatar_m.png"
+          },
+          {
+            "comment": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+            "time": "2019-09-17T08:38:00+00:00",
+            "isBuyer": false,
+            "image": "http://localhost:5555/assets/images/avatar_w.png"
+          }
+        ]
       }
     },
     {
@@ -45,7 +90,7 @@
       "paymentMethod": "iTunes Gift Card",
       "chat": {
         "isRead": false,
-        "messages": []
+        "items": []
       }
     }
   ]

@@ -1,43 +1,14 @@
 import React from 'react'
 import './ChatHeaderContainer.scss'
-import { ITrade, ITradeHeader, ITrades } from '../../../store/trades/types'
-import { Constants } from '../../../utils/constants'
-import { deleteTrade } from '../../../store/trades/actions'
+import { ITradeHeader, ITrades } from '../../../store/trades/types'
 
-interface PropsFromDispatch {
-  deleteTrade: typeof deleteTrade
-}
-
-interface State {
-  selected?: ITrade
-}
-
-export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades&PropsFromDispatch, State> {
-
-  constructor(props: ITradeHeader&ITrades&PropsFromDispatch) {
-    super(props)
-
-    this.state = {}
-  }
-
-  removeTrade = () => {
-    // this.props.dispatch.deleteTrade(this.props.trade)
-    // console.log(this.props.actions.deleteTrade(this.props.trade));
-    // deleteTrade(this.props.trade)
-    // console.log(this.props.trades);
-    // @todo dispatch
-    // const { deleteTrade: dt } = this.props.trade
-    // // dt()
-  }
-
+export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades> {
   render() {
     return (
       <React.Fragment>
         <div className={'chatHeader__wrapper'}>
           <div className={'chatHeader__action'}>
-            <button onClick={this.removeTrade}>
-              <img src={Constants.assetsUrl + '/images/trash-bin.png'} alt="remove"/>
-            </button>
+            {this.props.children}
           </div>
           <div className={'chatHeader__header'}>
             <div className={'chatHeader__title'}>{this.props.paymentMethod}</div>

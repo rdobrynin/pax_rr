@@ -2,12 +2,13 @@ import * as React from 'react'
 import Moment from 'react-moment'
 import 'moment-timezone'
 import './chathistory.scss'
-import { Message } from '../../../store/chat/types'
 import moment from 'moment'
+import { IMessage } from '../../../store/trades/types'
+import TradeChatContainer from '../../layout/trade/TradeChatContainer'
 
 export interface ChatHistoryProps {
-  messages: Message[];
-  externalComment: string,
+  messages?: IMessage[]
+  externalComment?: string,
 }
 
 Moment.globalTimezone = 'Europe/Tallinn'
@@ -27,29 +28,39 @@ export class ChatHistory extends React.Component<ChatHistoryProps> {
     return (
       <div className="chat-history">
         <ul>
-          <li className="chat-history__clearfix to-message">
-            <div className="chat-history__message">
-              {this.props.externalComment}
-            </div>
-            <div className="chat-history__details">
+          <React.Fragment>
+            {!!this.props.externalComment ? (
+              <li className="chat-history__clearfix to-message">
+                <div className="chat-history__message">
+                  {this.props.externalComment}
+                </div>
+                <div className="chat-history__details">
           <span className="chat-history__time">
               <Moment add={{ hours: 12 }} format="hh:mm A">
                    {sessionTime}
             </Moment>
           </span>
-            </div>
-          </li>
-          {this.props.messages.map(message => (
-            <li className="chat-history__clearfix from-message" key={message.timestamp}>
-              <h3>From: {message.user}</h3>
-              <div className="chat-history__message">
-                {message.message}
-                <div className="chat-history__details">
                 </div>
-                <span className="chat-history__time">{message.timestamp}</span>
-              </div>
-            </li>
-          ))}
+              </li>
+            ) : ( '' )}
+          </React.Fragment>
+          {this.props.messages ? (
+            <React.Fragment>
+              {this.props.messages.map((item, i) => (
+                <li className={'chat-history__clearfix ' + ( item.isBuyer ? 'to-message' : 'from-message' )} key={i}>
+                  <div className="chat-history__message">
+                    {item.comment}
+                  </div>
+                  <div className="chat-history__details">
+                <span className="chat-history__time">
+                  <Moment format="hh:mm A">{item.time}</Moment>
+                </span>
+                  </div>
+                  <div className="avatar"><img src={item.image} alt=""/></div>
+                </li>
+              ))}
+            </React.Fragment>
+          ) : ( '' )}
         </ul>
       </div>
     )

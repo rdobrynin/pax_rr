@@ -1,13 +1,33 @@
 .chat-history {
+
+  overflow-y: scroll;
+  height: 70%;
+  //max-height: 70%;
+
   ul {
     li {
       display: flex;
       align-items: center;
       flex-direction: column;
+      position: relative;
+     .avatar {
+       width: 35px;
+       height: 35px;
+       border-radius: 50%;
+       background-color: #C6D2E5;
+       position: absolute;
+       right: 0;
+       overflow: hidden;
+       top: calc(50% - 35px);
+       img {
+         object-fit: cover;
+         width: 100%;
+         position: relative;
+         height: 100%;
+       }
+     }
     }
   }
-
-  overflow-y: scroll;
 
   .chat-history__details {
     margin-bottom: 15px;
@@ -52,6 +72,9 @@
     .chat-history__message {
       background: #5C7394;
     }
+    .avatar {
+      right: 0;
+    }
   }
 
   .from-message {
@@ -89,6 +112,9 @@
       margin-bottom: 15px;
       width: 80%;
       text-align: left;
+    }
+    .avatar {
+      left: 0;
     }
   }
 

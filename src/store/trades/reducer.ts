@@ -2,9 +2,9 @@ import { Reducer } from 'redux'
 import { TradesState, TradesActionTypes } from './types'
 
 export const initialState: TradesState = {
-  data: {name: '', image: '', amount: 0, reputationPositive: 0, reputationNegative: 0, trades: [] },
+  data: { name: '', image: '', amount: 0, reputationPositive: 0, reputationNegative: 0, trades: [] },
   errors: undefined,
-  loading: false,
+  loading: false
 }
 
 const reducer: Reducer<TradesState> = (state = initialState, action) => {
@@ -23,8 +23,14 @@ const reducer: Reducer<TradesState> = (state = initialState, action) => {
       return { ...state, loading: false, data: action.payload }
     }
     case TradesActionTypes.DELETE_TRADE: {
-      console.log(2);
-      return { ...state, loading: false, data: state.data.trades.filter(item => item !== action.payload)}
+      return {
+        ...state,
+        loading: false,
+        data: {
+          ...state.data,
+          trades: [...state.data.trades].filter(item => item !== action.payload)
+        }
+      }
     }
     default: {
       return state

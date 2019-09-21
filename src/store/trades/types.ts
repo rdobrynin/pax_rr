@@ -7,7 +7,7 @@ export interface ITrades extends ApiResponse {
 }
 
 export interface ITrade {
-  readonly hash?: string
+  readonly hash: string
   amount: number
   tradeStatus: string
   paymentMethod: string
@@ -21,7 +21,14 @@ export interface ITotalTrades {
 
 export interface IChat {
   isRead: boolean,
-  messages: string[],
+  items?: IMessage[],
+}
+
+export interface IMessage {
+  comment: string,
+  time: string,
+  isBuyer: boolean,
+  image: string
 }
 
 export interface ITradeStatus {
@@ -33,7 +40,7 @@ export interface ITradeAmount {
 }
 
 export interface ITradeHash {
-  readonly hash: string
+  readonly hash: any
 }
 
 export interface ITradeInformationHeader {

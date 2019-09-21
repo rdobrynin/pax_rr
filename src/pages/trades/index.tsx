@@ -67,18 +67,25 @@ interface RouteParams {
   hash: string
 }
 
-interface State {
-  selected?: ITrade
-}
+type TradeProps = PropsFromTradesState&ITrade&PropsFromDispatch&RouteComponentProps<RouteParams>
 
-type TradeProps = PropsFromTradesState&PropsFromDispatch&RouteComponentProps<RouteParams>
+interface State {
+  selected?: TradeProps
+}
 
 class TradesIndexPage extends React.Component<TradeProps, State> {
 
   constructor(props: TradeProps) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      selected: this.props
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps: Readonly<TradeProps>, nextContext: any): void {
+    // console.log(nextProps);
+
   }
 
   public componentDidMount() {
@@ -86,33 +93,22 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
     ft()
     const { fetchRateRequest: fr } = this.props
     fr()
-    // deleteTrade(this.props.data.trades[0])
   }
 
   sendMessage = (message: string) => {
-    console.log(11);
-    //  @todo dispatch
+    // console.log(message);
   }
-  removeTrade = () => {
+  deleteTrade = (selectedTrade: ITrade) => {
     const { deleteTrade: dr } = this.props
-    // dr({
-    //   hash: this.props.data.trades[1].hash,
-    //   amount: this.props.data.trades[1].amount,
-    //   tradeStatus: this.props.data.trades[1].tradeStatus,
-    //   paymentMethod: this.props.data.trades[1].paymentMethod,
-    //   isActive: this.props.data.trades[1].isActive,
-    //   chat: {
-    //     isRead: this.props.data.trades[1].chat.isRead,
-    //     messages: this.props.data.trades[1].chat.messages
-    //   }
-    // })
-    dr(this.props.data.trades[0])
-    // console.log(this.props.data.trades);
+    dr(selectedTrade)
   }
 
   public render() {
     const { loading, data, match, rate } = this.props
-    const selectedTrade: any = data.trades.find(trades => trades.hash === match.params.hash)
+    const selectedTrades: ITrade[] = data.trades.filter(trade => trade.hash === match.params.hash)
+    const selectedTrade: ITrade = selectedTrades[0]
+    console.log(selectedTrade);
+
     const currentRate: IRate = rate
     const isData: boolean = this.props.data.trades.length > 0
 
@@ -129,7 +125,6 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
           links={actionsNavigation}/>
         {isData ? (
           <Container>
-            <button  onClick={this.removeTrade}>click</button>
             {/*<pre>{JSON.stringify(selectedTrade, null, 2)}</pre>*/}
             <TradePageWrapper className={'trade-wrapper'}>
               <div className={'row'}>
@@ -151,8 +146,8 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                                  hash={trade.hash}
                                  amount={trade.amount}
                                  tradeStatus={trade.tradeStatus}
-                                 paymentMethod={trade.paymentMethod}
-                      />
+                                 paymentMethod={trade.paymentMethod}>
+                      </TradeItem>
                     ))}
                   </TradeItemContainer>
                 </TradeWrapper>
@@ -162,27 +157,37 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                       <ChatHeaderContainer trades={data.trades} trade={selectedTrade} name={data.name}
                                            paymentMethod={selectedTrade.paymentMethod}
                                            reputationNegative={data.reputationNegative}
-                                           reputationPositive={data.reputationPositive}
-                                           deleteTrade={deleteTrade}
-                      />
-                    ) : ( '' )}
-                    <div>
+                                           reputationPositive={data.reputationPositive}>
+                        <button onClick={() => this.deleteTrade(selectedTrade)}>
+                          <img src={Constants.assetsUrl + '/images/trash-bin.png'} alt="remove"/>
+                        </button>
+                      </ChatHeaderContainer>
+                    ) : ('')}
+                    <React.Fragment>
+                      {selectedTrade ? (
                       <ChatHistory
-                        externalComment={selectedTrade ? Constants.chat.chatBuyerBodyText :
-                          Constants.chat.chatInfoBodyText}
-                        messages={[]}/>
-                    </div>
-                    {selectedTrade ? (
+                        externalComment={''}
+                        messages={selectedTrade.chat.items}/>
+                      ) : (
+                        <ChatHistory
+                          externalComment={selectedTrade ? Constants.chat.chatBuyerBodyText :
+                            Constants.chat.chatInfoBodyText}
+                          messages={[]}/>
+                      )}
+                    </React.Fragment>
+                    <React.Fragment>
+                      {selectedTrade ? (
                       <ChatInput
                         userImage={'../'}
                         message={'todo'}
                         sendMessage={this.sendMessage}
                       />
-                    ) : ( '' )}
+                      ) : ( '' )}
+                    </React.Fragment>
                   </TradeChatContainer>
                 </TradeChatWrapper>
                 <TradeInformationWrapper>
-                  <TradeInformation isTrade={selectedTrade} name={data.name}/>
+                  <TradeInformation isTrade={!!selectedTrade} name={data.name}/>
                   <TradeReleaseBtc/>
                   {selectedTrade ? (
                     <TradeInformationStatisticsWrapper className={'grid'}>
