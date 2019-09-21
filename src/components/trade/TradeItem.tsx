@@ -27,7 +27,7 @@ export class TradeItem extends React.Component<IRate&TradeProps, State> {
     }
   }
 
-  public componentWillMount() {
+  public UNSAFE_componentWillMount() {
     const isSelected: boolean = this.props.hash === this.props.match.params.hash
     if (isSelected) {
       this.setState({ selected: this.props.chat.isRead = true })
