@@ -6,8 +6,6 @@ export interface ITopNavLinks {
 export interface IHeaderProps {
   title: string;
   links: ITopNavLinks[];
-  logoImage: string;
-  imageSize: string;
   isOpen: boolean;
 }
 

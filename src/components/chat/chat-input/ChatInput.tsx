@@ -1,5 +1,6 @@
 import * as React from 'react'
 import './chatInput.scss'
+import { Constants } from '../../../utils/constants'
 // import { UpdateMessageParam } from '../../../pages/trades'
 
 export interface ChatProps {
@@ -28,9 +29,9 @@ export const ChatInput: React.FunctionComponent<ChatProps> = ({ userImage, messa
         defaultValue=""
         // onChange={updateMessage}
         onKeyPress={keyPress}
-        placeholder="Type a message..."
+        placeholder= {Constants.chat.placeholderText}
       />
-      <button onClick={send}>Send</button>
+      <button onClick={send}>{Constants.chat.handlerInputTitle}</button>
     </div>
   )
 }

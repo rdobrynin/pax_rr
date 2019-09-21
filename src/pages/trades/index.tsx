@@ -47,6 +47,7 @@ import LoadingSpinner from '../../components/spinner/Spinner'
 import Alert from '../../components/layout/Alert'
 import TradeItemContainer from '../../components/layout/trade/TradeItemContainer'
 import { IRate } from '../../store/rate/types'
+import { Constants } from '../../utils/constants'
 
 interface PropsFromTradesState {
   loading: boolean,
@@ -85,10 +86,28 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
     ft()
     const { fetchRateRequest: fr } = this.props
     fr()
+    // deleteTrade(this.props.data.trades[0])
   }
 
   sendMessage = (message: string) => {
+    console.log(11);
     //  @todo dispatch
+  }
+  removeTrade = () => {
+    const { deleteTrade: dr } = this.props
+    // dr({
+    //   hash: this.props.data.trades[1].hash,
+    //   amount: this.props.data.trades[1].amount,
+    //   tradeStatus: this.props.data.trades[1].tradeStatus,
+    //   paymentMethod: this.props.data.trades[1].paymentMethod,
+    //   isActive: this.props.data.trades[1].isActive,
+    //   chat: {
+    //     isRead: this.props.data.trades[1].chat.isRead,
+    //     messages: this.props.data.trades[1].chat.messages
+    //   }
+    // })
+    dr(this.props.data.trades[0])
+    // console.log(this.props.data.trades);
   }
 
   public render() {
@@ -96,13 +115,13 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
     const selectedTrade: any = data.trades.find(trades => trades.hash === match.params.hash)
     const currentRate: IRate = rate
     const isData: boolean = this.props.data.trades.length > 0
+
     return (
       <Page>
         {loading && data.length === 0 && (
           <LoadingSpinner/>
         )}
-        <TopNavigation title={'Paxful'} links={linksTopNavigation} isOpen={false}
-                       logoImage={`${process.env.PUBLIC_URL}/assets/images/project-logo.png`} imageSize={'137px'}/>
+        <TopNavigation title={Constants.title} links={linksTopNavigation} isOpen={false}/>
         <ActionNavigation
           history={this.props.history}
           location={this.props.location}
@@ -110,7 +129,8 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
           links={actionsNavigation}/>
         {isData ? (
           <Container>
-            {/*<pre>{JSON.stringify(this.props.rate.bpi.USD, null, 2)}</pre>*/}
+            <button  onClick={this.removeTrade}>click</button>
+            {/*<pre>{JSON.stringify(selectedTrade, null, 2)}</pre>*/}
             <TradePageWrapper className={'trade-wrapper'}>
               <div className={'row'}>
                 <TradeWrapper>
@@ -143,10 +163,14 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                                            paymentMethod={selectedTrade.paymentMethod}
                                            reputationNegative={data.reputationNegative}
                                            reputationPositive={data.reputationPositive}
+                                           deleteTrade={deleteTrade}
                       />
                     ) : ( '' )}
                     <div>
-                      <ChatHistory messages={[]}/>
+                      <ChatHistory
+                        externalComment={selectedTrade ? Constants.chat.chatBuyerBodyText :
+                          Constants.chat.chatInfoBodyText}
+                        messages={[]}/>
                     </div>
                     {selectedTrade ? (
                       <ChatInput
@@ -194,7 +218,7 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
               </div>
             </TradePageWrapper>
           </Container>
-        ) : ( <Alert>You haven't any Trades</Alert> )}
+        ) : ( <Alert>{Constants.trade.alertNotTradesText}</Alert> )}
       </Page>
     )
   }
@@ -209,7 +233,8 @@ const mapStateToProps = ({ trades, rate }: ApplicationState) => ( {
 
 const mapDispatchToProps = {
   fetchRequest: fetchRequest,
-  fetchRateRequest: fetchRateRequest
+  fetchRateRequest: fetchRateRequest,
+  deleteTrade: deleteTrade
 }
 
 export default connect(

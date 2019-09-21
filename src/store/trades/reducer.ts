@@ -23,6 +23,7 @@ const reducer: Reducer<TradesState> = (state = initialState, action) => {
       return { ...state, loading: false, data: action.payload }
     }
     case TradesActionTypes.DELETE_TRADE: {
+      console.log(2);
       return { ...state, loading: false, data: state.data.trades.filter(item => item !== action.payload)}
     }
     default: {

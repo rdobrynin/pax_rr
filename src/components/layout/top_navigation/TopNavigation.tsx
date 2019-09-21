@@ -5,6 +5,7 @@ import styled from '../../../utils/styled'
 import { IHeaderProps } from '../../../models/navigation/navigation'
 import Media from 'react-media'
 import { SidebarNavigation } from '../sidebar_navigation/SidebarNavigation'
+import { Constants } from '../../../utils/constants'
 
 const HeaderNavLink = styled(NavLink)`
 `
@@ -36,9 +37,7 @@ export class TopNavigation extends React.Component<IHeaderProps, State> {
                 <SidebarNavigation
                   isOpen={this.state.isOpen}
                   title={this.props.title}
-                  links={this.props.links}
-                  logoImage={this.props.logoImage}
-                  imageSize={this.props.imageSize}/>
+                  links={this.props.links}/>
                 <div className={'top-navigation'}>
                   <button className={'hamburger-menu-button'} onClick={this.toggleClickHandler.bind(this)}>
                     <div className={'hamburger-menu-button__line'}/>
@@ -47,7 +46,7 @@ export class TopNavigation extends React.Component<IHeaderProps, State> {
                   </button>
                   <div className={'top-navigation__logo'}>
                     <HeaderNavLink exact to="./">
-                      <img src={this.props.logoImage} alt="" width={this.props.imageSize}/>
+                      <img src={Constants.assetsUrl + '/images/project-logo.png'} width="135px" alt="logo"/>
                     </HeaderNavLink>
                   </div>
                 </div>
@@ -56,7 +55,7 @@ export class TopNavigation extends React.Component<IHeaderProps, State> {
               <div className={'top-navigation'}>
                 <div className={'top-navigation__logo'}>
                   <HeaderNavLink exact to="./">
-                    <img src={this.props.logoImage} alt="" width={this.props.imageSize}/>
+                    <img src={Constants.assetsUrl + '/images/project-logo.png'} width="145px" alt="logo"/>
                   </HeaderNavLink>
                 </div>
                 <nav>

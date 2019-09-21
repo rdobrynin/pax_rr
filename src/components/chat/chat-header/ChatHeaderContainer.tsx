@@ -1,11 +1,33 @@
 import React from 'react'
 import './ChatHeaderContainer.scss'
-import { ITradeHeader, ITrades } from '../../../store/trades/types'
+import { ITrade, ITradeHeader, ITrades } from '../../../store/trades/types'
+import { Constants } from '../../../utils/constants'
+import { deleteTrade } from '../../../store/trades/actions'
 
-export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades> {
+interface PropsFromDispatch {
+  deleteTrade: typeof deleteTrade
+}
 
-  static removeTrade() {
+interface State {
+  selected?: ITrade
+}
+
+export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades&PropsFromDispatch, State> {
+
+  constructor(props: ITradeHeader&ITrades&PropsFromDispatch) {
+    super(props)
+
+    this.state = {}
+  }
+
+  removeTrade = () => {
+    // this.props.dispatch.deleteTrade(this.props.trade)
+    // console.log(this.props.actions.deleteTrade(this.props.trade));
+    // deleteTrade(this.props.trade)
+    // console.log(this.props.trades);
     // @todo dispatch
+    // const { deleteTrade: dt } = this.props.trade
+    // // dt()
   }
 
   render() {
@@ -13,8 +35,8 @@ export class ChatHeaderContainer extends React.Component<ITradeHeader&ITrades> {
       <React.Fragment>
         <div className={'chatHeader__wrapper'}>
           <div className={'chatHeader__action'}>
-            <button onClick={ChatHeaderContainer.removeTrade}>
-              <img src={`${process.env.PUBLIC_URL}/assets/images/trash-bin.png`} alt="remove"/>
+            <button onClick={this.removeTrade}>
+              <img src={Constants.assetsUrl + '/images/trash-bin.png'} alt="remove"/>
             </button>
           </div>
           <div className={'chatHeader__header'}>

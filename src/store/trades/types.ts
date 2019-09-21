@@ -3,7 +3,7 @@ export interface ITrades extends ApiResponse {
   readonly image?: string
   reputationPositive: number
   reputationNegative: number
-  trades: ITrade[]
+  trades: ITrade[],
 }
 
 export interface ITrade {

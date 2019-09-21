@@ -1,10 +1,12 @@
 button {
+  text-transform: capitalize;
+
   &.large-btn {
     background-color: #52D48C;
     border-radius: 28px;
     border: 1px solid #47b679;
     cursor: pointer;
-    color: #ffffff;
+    color: white;
     font-weight: 300;
     font-size: 1rem;
     padding: 9px 25px;

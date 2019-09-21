@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router'
 import { ConvertToBtc } from '../../helpers/rate'
 import { IRate } from '../../store/rate/types'
+import { Constants } from '../../utils/constants'
 
 interface RouteParams {
   hash: string
@@ -46,7 +47,7 @@ export class TradeItem extends React.Component<IRate&TradeProps, State> {
               <NavLink to={`/sell_btc/${this.props.hash}`}>
                 <div>
                   <div className={'trade-item__action ' + ( isSelected ? 'is-selected' : '' )}>
-                    {this.props.name}&nbsp;<span>is buying</span></div>
+                    {this.props.name}&nbsp;<span>{Constants.trade.isBuyingTitle}</span></div>
                   <div className={'trade-item__payment'}>{this.props.paymentMethod}</div>
                   <div className={'trade-item__value'}>
                     {this.props.amount} {this.props.bpi.USD.code}&nbsp;
