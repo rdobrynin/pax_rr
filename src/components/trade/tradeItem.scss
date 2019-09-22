@@ -1,13 +1,12 @@
+@import '.././../styles/mixins.scss';
 @import '.././../styles/variables.scss';
 
 .trade-item__wrapper {
-  border-bottom: 1px solid #D6DBE2;
+  border-bottom: 1px solid $borderGrayColor;
   padding: 20px 20px 20px 60px;
   line-height: 1.5;
-  display: flex;
-  flex-direction: row;
+  @include flexRowCenter();
   justify-content: space-between;
-  align-items: center;
   @media only screen and (max-width: 979px) {
     padding: 20px 40px 20px 50px;
   }
@@ -20,40 +19,44 @@
   &.is-active {
     background-color: $activeTradeBgColor;
     position: relative;
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: $screen-lg-min) {
       border-top: 1px solid $borderGrayColor;
       border-bottom: 1px solid $borderGrayColor;
       margin: -1px -6px 0px 0px;
     }
     left: 0;
-    padding-left: 60px;
-    @media only screen and (min-width: 768px) {
+    padding-left: 4rem;
+    @media only screen and (max-width: $screen-md-max) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    @media only screen and (min-width: $screen-lg-min) {
       &:after {
         content: '';
         position: absolute;
         background-color: $activeTradeBgColor;
         height: 100%;
-        width: 30px;
+        width: 1rem;
         right: -10px;
-        z-index: 13;
+        z-index: $zIndexTop;
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
-        border-top: 1px solid #D6DBE2;
-        border-bottom: 1px solid #D6DBE2;
-        border-right: 1px solid #D6DBE2;
+        border-top: 1px solid $borderTradeColor;
+        border-bottom: 1px solid $borderTradeColor;
+        border-right: 1px solid $borderTradeColor;
       }
     }
 
     .trade-item__action {
-      color: #5c7394;
+      color: $blueColor;
 
       span {
-        font-weight: 600;
+        font-weight: $fontWeightBold;
       }
     }
 
     .trade-item__payment {
-      font-weight: 400;
+      font-weight: $fontWeightNormal;
     }
 
     .trade-item__value {
@@ -74,13 +77,13 @@
     .trade-item__action {
       position: relative;
       color: $grayTextColor;
-      font-size: 0.9rem;
-      @media only screen and (min-width: 768px) and (max-width: 940px) {
-        font-size: 0.8rem;
+      font-size: $fontSmallSize;
+      @media only screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-md-max) {
+        font-size: $fontSmallChatSize;
       }
 
       span {
-        font-weight: 600;
+        font-weight: $fontWeightBold;
       }
 
       &:before {
@@ -89,11 +92,12 @@
         height: 10px;
         width: 10px;
         margin-right: 0.5rem;
-        background-color: #55D3C3;
+        background-color: $activeChatReadColor;
         position: absolute;
-        left: -30px;
-        top: 6px;
+        left: -2rem;
+        top: 0.4rem;
       }
+
       &.is-selected {
         &:before {
           background-color: #e2e2e2;
@@ -102,17 +106,17 @@
     }
 
     .trade-item__payment {
-      font-weight: 600;
-      font-size: 1.0rem;
+      font-weight: $fontWeightBold;
+      font-size: $fontNormalSize;
       color: black;
-      @media only screen and (min-width: 768px) and (max-width: 940px) {
-        font-size: 0.9rem;
+      @media only screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-md-max) {
+        font-size: $fontSmallSize;
       }
     }
 
     .trade-item__value {
       color: $grayTextColor;
-      font-size: 0.8rem;
+      font-size: $fontNormalSize - 0.2;
     }
 
     .trade-item__buyer_wrapper {
@@ -120,17 +124,17 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      width: 61px;
+      width: 3.5rem;
 
       .trade-item__buyer {
         width: 40px;
         height: 40px;
         align-items: center;
-        background-color: #C6D2E5;
+        background-color: $bgActiveTradeColor;
         border-radius: 50%;
         background-size: cover;
         overflow: hidden;
-        margin-bottom: 8px;
+        margin-bottom: 0.5rem;
 
         img {
           object-fit: cover;
@@ -141,11 +145,11 @@
       }
 
       .trade-item__status {
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: $fontNormalSize - 0.2;
+        font-weight: $fontWeightBold;
         color: $textGreen;
-        @media only screen and (min-width: 768px) and (max-width: 940px) {
-          font-size: 0.6rem;
+        @media only screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-md-max) {
+          font-size: $fontSmallMdSize;
         }
       }
     }

@@ -3,7 +3,7 @@ import styled from '../../utils/styled'
 const Alert = styled('div')`
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 30px;
     padding: 0;
     margin: 0;
     display: -webkit-box;
@@ -13,6 +13,12 @@ const Alert = styled('div')`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #5c7394;
+    text-decoration: none;
+    padding: 1rem;
+    background-color: #d4d4d4;
+    line-height: 1.5;
+    text-align: center;
 `
 
 export default Alert

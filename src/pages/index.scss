@@ -1,7 +1,22 @@
+@import '.././styles/variables.scss';
 .temp {
   display: flex;
   align-items: center;
   height: 100%;
   flex-direction: column;
   justify-content: center;
+  a {
+    color: $blueColor;
+    text-decoration: none;
+    padding: 1rem;
+    background-color: $borderColor;
+    line-height: 1.5;
+    text-align: center;
+    @media only screen and (max-width: $screen-lg-md-max) {
+      width: 80%;
+    }
+    &:focus, &:hover {
+      color: $activeLinkColor;
+    }
+  }
 }

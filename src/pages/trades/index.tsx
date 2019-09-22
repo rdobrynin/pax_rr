@@ -131,6 +131,8 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
               <div className={'row'}>
                 <TradeWrapper>
                   <TradeItemContainer>
+                    <nav>
+                      <ul>
                     {data.trades.map((trade, i) => (
                       <TradeItem key={i}
                                  bpi={currentRate.bpi}
@@ -150,6 +152,8 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                                  paymentMethod={trade.paymentMethod}>
                       </TradeItem>
                     ))}
+                      </ul>
+                    </nav>
                   </TradeItemContainer>
                 </TradeWrapper>
                 <TradeChatWrapper>

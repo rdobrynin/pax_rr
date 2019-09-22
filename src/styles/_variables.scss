@@ -5,12 +5,45 @@
 $bgColor: #ecf0f7;
 $borderColor: #d4d4d4;
 $activeLinkColor: #30364D;
+$blueColor: #5c7394;
 
 $activeTradeBgColor: #F5F7FA;
 
 $grayTextColor: #a7a7a7;
 
+$darkGrayColor: #949494;
+
 $textGreen: #48C57F;
 
 $borderGrayColor: #d4d4d4;
 $activeTradeStateColor: #55D3C3;
+$bgActiveTradeColor: #C6D2E5;
+$borderTradeColor: #D6DBE2;
+
+$activeChatReadColor: #55D3C3;
+
+$chatMessageGrayColor: #D6DBE2;
+
+$btnBgColor: #52D48C;
+$btnBorderColor: #47b679;
+
+
+$screen-md-max: 767px;
+$screen-lg-min: 768px;
+$screen-lg-md-max: 940px;
+$screen-lg-max-max: 1110px;
+
+
+$fontWeightExtraLight: 200;
+$fontWeightLight: 300;
+$fontWeightNormal: 400;
+$fontWeightBold: 600;
+
+$fontNormalSize: 1rem;
+$fontSmallSize: 0.9rem;
+$fontSmallMdSize: 0.6rem;
+$fontSmallChatSize: 0.8rem;
+
+//z-index
+$zIndex: 1;
+$zIndexTop: 15;

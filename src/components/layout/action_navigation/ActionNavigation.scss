@@ -1,18 +1,19 @@
+@import '.././../../styles/variables.scss';
+
 .action-navigation {
   display: flex;
   justify-content: space-between;
   flex: max-content 1;
   height: 50px;
-  min-height: 50px;
-  padding: 0 40px 0 60px;
+  padding: 0 2rem 0 4rem;
   align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-  border-left: 1px solid #d4d4d4;
-  border-right: 1px solid #d4d4d4;
-  z-index: 1;
+  background-color: white;
+  border-bottom: 1px solid $borderGrayColor;
+  border-left: 1px solid $borderGrayColor;
+  border-right: 1px solid $borderGrayColor;
+  z-index: $zIndex;
   @media only screen and (max-width: 850px) {
-    padding: 0 40px 0 0;
+    padding: 0 2rem 0 0;
   }
 
   nav {
@@ -20,11 +21,11 @@
 
     ul {
       li {
-        font-size: 0.9rem;
+        font-size: $fontSmallSize;
         display: inline-flex;
         height: 50px;
         line-height: 50px;
-        border-right: 1px solid #d4d4d4;
+        border-right: 1px solid $borderGrayColor;
 
         div {
           padding: 0 1.8rem;
@@ -37,24 +38,22 @@
         }
 
         &:first-child {
-          border-left: 1px solid #d4d4d4;
-          font-weight: 600;
+          border-left: 1px solid $borderGrayColor;
+          font-weight: $fontWeightBold;
         }
 
         &:hover {
-          background-color: #ecf0f7;
+          background-color: $bgColor;
           cursor: pointer;
           transition: background-color 0.3s ease-in-out;
         }
 
         a {
           text-decoration: none;
-          color: #000;
-          &.is-active {
-            background-color: #ecf0f7;
-          }
-          &:focus, &:hover {
+          color: black;
 
+          &.is-active {
+            background-color: $bgColor;
           }
         }
       }

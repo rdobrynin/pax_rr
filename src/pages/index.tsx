@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Page from '../components/layout/Page'
-import './index.scss'
 import { PageContainer } from '../components/layout/PageContainer'
+import './index.scss'
 
 function IndexPage() {
   return (

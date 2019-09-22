@@ -1,0 +1,15 @@
+@mixin flexRowCenter
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+@mixin flexColCenter
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}

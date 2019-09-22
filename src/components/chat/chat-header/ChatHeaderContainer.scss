@@ -1,53 +1,62 @@
+@import '.././../../styles/variables.scss';
+@import '.././../../styles/mixins.scss';
+
 .chatHeader__wrapper {
   height: 100px;
-  margin: -20px 0 20px 0;
-  border-bottom: 1px solid #d6d6d6;
-  display: flex;
-  flex-direction: row;
+  margin: -1rem 0 1rem 0;
+  border-bottom: 1px solid $borderGrayColor;
+  @include flexRowCenter();
   justify-content: center;
-  align-items: center;
-  position: relative;
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: $screen-md-max) {
     margin-top: 0;
   }
+
   .chatHeader__header {
     text-align: center;
     line-height: 1.5;
+
     .chatHeader__title {
       color: #646A77;
-      font-weight: 600;;
+      font-weight: $fontWeightBold;
       font-size: 1.2rem;
     }
+
     .chatHeader__value {
-      color: #a7a7a7;
+      color: $grayTextColor;
       font-size: 0.9rem;
+
       span {
         color: black;
+
         &:first-child {
-          color: #52D48C;
-          font-weight: 600;
+          color: $textGreen;
+          font-weight: $fontWeightBold;
         }
+
         &:last-child {
           color: red;
-          font-weight: 600;
+          font-weight: $fontWeightBold;
         }
       }
     }
   }
+
   .chatHeader__action {
     border-radius: 50%;
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 20px;
+    left: 1rem;
+
     button {
-      width: 40px;
-      height: 40px;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       background-color: #B4BEC6;
     }
+
     img {
-      width: 14px;
+      width: 1rem;
     }
   }
 }

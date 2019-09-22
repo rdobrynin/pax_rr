@@ -1,13 +1,14 @@
+@import '.././../../styles/variables.scss';
 button {
   text-transform: capitalize;
 
   &.large-btn {
-    background-color: #52D48C;
+    background-color: $btnBgColor;
     border-radius: 28px;
-    border: 1px solid #47b679;
+    border: 1px solid $btnBorderColor;
     cursor: pointer;
     color: white;
-    font-weight: 300;
+    font-weight: $fontWeightLight;
     font-size: 1rem;
     padding: 9px 25px;
     text-decoration: none;
@@ -22,13 +23,13 @@ button {
       font-size: 0.6rem;
     }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: $screen-md-max) {
       font-size: 1rem;
     }
 
 
     &:hover {
-      background-color: #4cd470;
+      background-color: $btnBorderColor;
     }
   }
 }

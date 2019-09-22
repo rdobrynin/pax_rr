@@ -1,9 +1,12 @@
+@import '.././../styles/variables.scss';
+
 .trade-information {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   line-height: 1.5;
   text-align: center;
   word-break: break-word;
-  font-size: 0.9rem;
+  font-size: $fontSmallSize;
+
   time {
     text-transform: lowercase;
   }
@@ -12,13 +15,13 @@
     color: #575D6C;
 
     &.trade-information__seller {
-      font-weight: 600;
+      font-weight: $fontWeightBold;
     }
   }
 
   .trade-information__session {
-    color: #a7a7a7;
+    color: $grayTextColor;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: $fontSmallSize;
   }
 }
