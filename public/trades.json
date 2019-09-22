@@ -7,7 +7,7 @@
     {
       "hash": "45FD3Rr",
       "amount": 25.00,
-      "tradeStatus": "NOT PAID",
+      "tradeStatus": "PAID",
       "currency": "USD",
       "paymentMethod": "Amazon Gift Card",
       "chat": {
@@ -25,7 +25,7 @@
     {
       "hash": "41FF3er",
       "amount": 75.00,
-      "tradeStatus": "PAID",
+      "tradeStatus": "NOT_PAID",
       "currency": "USD",
       "paymentMethod": "PayPal",
       "chat": {
@@ -61,7 +61,7 @@
     {
       "hash": "12AG4aq",
       "amount": 155.00,
-      "tradeStatus": "NOT PAID",
+      "tradeStatus": "PAID",
       "currency": "USD",
       "paymentMethod": "Amazon Gift Card",
       "chat": {

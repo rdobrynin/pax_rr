@@ -2,25 +2,23 @@
   display: flex;
   width: 100%;
   margin-top: 10px;
+  position: relative;
   input[type="text"], input {
     width: 100%;
-    padding: 0 40px 0 10px;
+    padding: 0 58px 0 10px;
     height: 40px;
   }
 
   button {
-    left: -2px;
-    height: 44px;
-    width: 72px;
+    right: 0.1rem;
+    height: 41px;
+    width: 65px;
     background: white;
     color: #46CA6C;
     border: 0;
     -webkit-appearance: none;
-    position: relative;
-    top: 0;
-    border-top: 1px solid #d6d6d6;
-    border-bottom: 1px solid #d6d6d6;
-    border-right: 1px solid #d6d6d6;
+    position: absolute;
+    top: 0.1rem;
     font-size: 0.7rem;
     text-transform: uppercase;
     font-weight: 600;

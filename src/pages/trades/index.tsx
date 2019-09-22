@@ -48,6 +48,7 @@ import Alert from '../../components/layout/Alert'
 import TradeItemContainer from '../../components/layout/trade/TradeItemContainer'
 import { IRate } from '../../store/rate/types'
 import { Constants } from '../../utils/constants'
+import { TradeStatusEnum } from '../../enums/tradeStatusEnum'
 
 interface PropsFromTradesState {
   loading: boolean,
@@ -188,7 +189,9 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                 </TradeChatWrapper>
                 <TradeInformationWrapper>
                   <TradeInformation isTrade={!!selectedTrade} name={data.name}/>
+                  {selectedTrade && selectedTrade.tradeStatus === TradeStatusEnum.PAID ? (
                   <TradeReleaseBtc/>
+                  ) : ( '' )}
                   {selectedTrade ? (
                     <TradeInformationStatisticsWrapper className={'grid'}>
                       <TradeInformationReputationContainer>

@@ -4,7 +4,6 @@ import 'moment-timezone'
 import './chathistory.scss'
 import moment from 'moment'
 import { IMessage } from '../../../store/trades/types'
-import TradeChatContainer from '../../layout/trade/TradeChatContainer'
 
 export interface ChatHistoryProps {
   messages?: IMessage[]

@@ -67,7 +67,8 @@ export enum TradesActionTypes {
   FETCH_SUCCESS = '@@trades/FETCH_SUCCESS',
   FETCH_ERROR = '@@trades/FETCH_ERROR',
   DELETE_TRADE = '@@trades/DELETE_TRADE',
-  UPDATE_TRADE = '@@trades/UPDATE_TRADE',
+  UPDATE_TRADE_CHAT = '@@trades/UPDATE_TRADE_CHAT',
+  ADD_MESSAGE_TRADE_CHAT = '@@trades/ADD_MESSAGE_TO_TRADE_CHAT',
 }
 
 export interface TradesState {
