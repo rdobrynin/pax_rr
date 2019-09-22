@@ -34,11 +34,11 @@ export class ChatHistory extends React.Component<ChatHistoryProps> {
                   {this.props.externalComment}
                 </div>
                 <div className="chat-history__details">
-          <span className="chat-history__time">
-              <Moment add={{ hours: 12 }} format="hh:mm A">
-                   {sessionTime}
-            </Moment>
-          </span>
+                  <span className="chat-history__time">
+                    <Moment add={{ hours: 12 }} format="hh:mm A">
+                      {sessionTime}
+                    </Moment>
+                  </span>
                 </div>
               </li>
             ) : ( '' )}
@@ -51,9 +51,11 @@ export class ChatHistory extends React.Component<ChatHistoryProps> {
                     {item.comment}
                   </div>
                   <div className="chat-history__details">
-                <span className="chat-history__time">
-                  <Moment format="hh:mm A">{item.time}</Moment>
-                </span>
+                  <span className="chat-history__time">
+                    <Moment add={{ hours: 12 }} format="hh:mm A">
+                      {item.time}
+                    </Moment>
+                  </span>
                   </div>
                   <div className="avatar"><img src={item.image} alt=""/></div>
                 </li>

@@ -2,6 +2,7 @@ import * as React from 'react'
 import Page from '../../components/layout/Page'
 import { RouteComponentProps } from 'react-router'
 import Container from '../../components/layout/Container'
+import Switch from 'react-switch';
 import { TopNavigation } from '../../components/layout/top_navigation/TopNavigation'
 import { linksTopNavigation } from '../../data/linksTopNavigation'
 import { actionsNavigation } from '../../data/actionsNavigation'
@@ -85,6 +86,10 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
     }
   }
 
+  handleChange(isBuyer: boolean) {
+    this.setState({ isBuyer });
+  }
+
   public componentDidMount() {
     const { fetchRequest: ft } = this.props
     ft()
@@ -97,17 +102,17 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
     dr(selectedTrade)
   }
 
-  send = (selectedTrade: ITrade, isByer: boolean) => {
+  send = (selectedTrade: ITrade) => {
     const inputValue = ( document.getElementById('messageInputValue') as HTMLInputElement ).value
     if (inputValue === '') {
       return
     }
-    isByer ? selectedTrade.chat.isRead = false : selectedTrade.chat.isRead = true;
+    this.state.isBuyer  ? selectedTrade.chat.isRead = false : selectedTrade.chat.isRead = true;
     const messageObj = {
       comment: inputValue,
       time: new Date().toISOString(),
-      isBuyer: false,
-      image: Constants.assetsUrl + ( isByer ? '/images/avatar_m.png' : '/images/avatar_w.png' )
+      isBuyer: this.state.isBuyer ,
+      image: Constants.assetsUrl + ( this.state.isBuyer ? '/images/avatar_m.png' : '/images/avatar_w.png' )
     }
     selectedTrade.chat.items.push(messageObj)
     const { addMessageTradeChat: addMessagetoTrade } = this.props
@@ -121,6 +126,12 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
 
     const currentRate: IRate = rate
     const isData: boolean = this.props.data.trades.length > 0
+
+    const labelStyle = {
+      color: '#b6b6b6',
+      fontSize: '9px',
+      padding: '4px 0 0 0'
+    };
 
     return (
       <Page>
@@ -188,13 +199,30 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
                           messages={[]}/>
                       )}
                     </React.Fragment>
+                    {selectedTrade ? (
+                    <React.Fragment>
+                      <Switch
+                        onColor="#5c7394"
+                        onHandleColor="#ffffff"
+                        handleDiameter={30}
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                        height={20}
+                        width={48}
+                        onChange={this.handleChange.bind(this)}
+                        checked={this.state.isBuyer} />
+                      <span style={labelStyle}>Seller/Buyer</span>
+                    </React.Fragment>
+                    ) : ( '' )}
                     <React.Fragment>
                       {selectedTrade ? (
                         <div className={'chatInput__wrapper'}>
                           <input id={'messageInputValue'}
                                  placeholder={Constants.chat.placeholderText}
                           />
-                          <button onClick={() => this.send(selectedTrade, this.state.isBuyer)}>
+                          <button onClick={() => this.send(selectedTrade)}>
                             {Constants.chat.handlerInputTitle}
                           </button>
                         </div>
