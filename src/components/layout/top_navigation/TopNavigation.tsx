@@ -24,7 +24,7 @@ export class TopNavigation extends React.Component<IHeaderProps, State> {
   }
 
   toggleClickHandler() {
-    this.setState({ isOpen: true })
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   render() {
@@ -37,7 +37,9 @@ export class TopNavigation extends React.Component<IHeaderProps, State> {
                 <SidebarNavigation
                   isOpen={this.state.isOpen}
                   title={this.props.title}
-                  links={this.props.links}/>
+                  links={this.props.links}>
+                  <div className={'sidebar-navigation__close'} onClick={this.toggleClickHandler.bind(this)}>x</div>
+              </SidebarNavigation>
                 <div className={'top-navigation'}>
                   <button className={'hamburger-menu-button'} onClick={this.toggleClickHandler.bind(this)}>
                     <div className={'hamburger-menu-button__line'}/>

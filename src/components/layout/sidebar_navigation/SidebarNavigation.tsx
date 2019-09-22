@@ -9,15 +9,11 @@ const HeaderNavLink = styled(NavLink)`
 
 export class SidebarNavigation extends React.Component<IHeaderProps> {
 
-  toggleSidebar() {
-    //  @todo dispatch
-  }
-
   render() {
     return (
       <React.Fragment>
         <div className={'sidebar-navigation ' + ( this.props.isOpen ? 'is-open' : '' )}>
-          <div className={'sidebar-navigation__close'} onClick={this.toggleSidebar.bind(this)}>x</div>
+          {this.props.children}
           <nav>
             <ul>
               {this.props.links.map((link, i) => (

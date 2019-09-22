@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   z-index: $zIndexTop;
+  transition: all 0.3s;
 
   ul {
     align-items: center;
@@ -34,7 +35,6 @@
   }
 
   &.is-open {
-    transition: all 0.3s;
     transform: translate3d(100vw, 0, 0) translateX(-100%);
   }
 
