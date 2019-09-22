@@ -21,7 +21,7 @@ export interface ITotalTrades {
 
 export interface IChat {
   isRead: boolean,
-  items?: IMessage[],
+  items: IMessage[],
 }
 
 export interface IMessage {

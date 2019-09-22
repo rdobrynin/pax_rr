@@ -46,11 +46,12 @@ export class TradeItem extends React.Component<IRate&TradeProps, State> {
   render() {
     return (
       <React.Fragment>
-        {/*<pre>{JSON.stringify(this.props, null, 2)}</pre>*/}
         <li className={'trade-item__wrapper ' + ( this.props.isActive ? 'is-active' : '' )}>
           <NavLink to={`/sell_btc/${this.props.hash}`}>
             <div>
-              <div className={'trade-item__action ' + ( this.props.chat.isRead ? 'is-selected' : '' )}>
+              <div className={'trade-item__action ' +
+              ( this.props.chat.isRead ? 'trade-item__chat__is-read ' : '' ) +
+              ( this.props.chat.items.length < 1 ? 'trade-item__chat__empty-chat ' : '')}>
                 {this.props.name}&nbsp;<span>{Constants.trade.isBuyingTitle}</span></div>
               <div className={'trade-item__payment'}>{this.props.paymentMethod}</div>
               <div className={'trade-item__value'}>

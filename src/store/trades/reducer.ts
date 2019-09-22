@@ -18,13 +18,17 @@ const reducer: Reducer<TradesState> = (state = initialState, action) => {
     case TradesActionTypes.FETCH_ERROR: {
       return { ...state, loading: false, errors: action.payload }
     }
-    case TradesActionTypes.UPDATE_TRADE_CHAT: {
-      // @todo
-      return { ...state, loading: false, data: action.payload }
-    }
     case TradesActionTypes.ADD_MESSAGE_TRADE_CHAT: {
-      // @todo
-      return { ...state, loading: false, data: action.payload }
+      return {
+        ...state,
+        loading: false,
+        data: {
+          ...state.data,
+          trades: [...state.data.trades].map((item) => {
+            return item;
+          })
+        }
+      }
     }
     case TradesActionTypes.DELETE_TRADE: {
       return {

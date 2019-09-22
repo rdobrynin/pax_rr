@@ -1,0 +1,38 @@
+@import '.././../styles/variables.scss';
+
+.chatInput__wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+
+  input[type="text"], input {
+    width: 100%;
+    padding: 0 58px 0 10px;
+    height: 2.5rem;
+  }
+
+  button {
+    right: 0.1rem;
+    height: 2.5rem;
+    width: 4rem;
+    background: white;
+    color: $textGreen;
+    border: 0;
+    -webkit-appearance: none;
+    position: absolute;
+    top: 0.1rem;
+    font-size: $fontSmallChatSize - 0.1;
+    text-transform: uppercase;
+    font-weight: $fontWeightBold;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+}

@@ -98,9 +98,14 @@
         top: 0.4rem;
       }
 
-      &.is-selected {
+      &.trade-item__chat__is-read {
         &:before {
           background-color: #e2e2e2;
+        }
+      }
+      &.trade-item__chat__empty-chat {
+        &:before {
+          display: none;
         }
       }
     }
