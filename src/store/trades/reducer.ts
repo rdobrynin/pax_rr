@@ -24,8 +24,11 @@ const reducer: Reducer<TradesState> = (state = initialState, action) => {
         loading: false,
         data: {
           ...state.data,
-          trades: [...state.data.trades].map((item) => {
-            return item;
+          trades: [...state.data.trades].map((trade) => {
+            if (trade.hash === action.payload.hash) {
+              trade.chat.items.push(action.payload)
+            }
+            return trade;
           })
         }
       }

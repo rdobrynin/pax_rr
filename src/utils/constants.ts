@@ -1,6 +1,6 @@
 export const Constants = {
   title: 'Paxful',
-  assetsUrl: `${process.env.PUBLIC_URL}/assets`,
+  assetsUrl: `${process.env.REACT_APP_PUBLIC_URL}/assets`,
   layoutBodyText: 'Go to Sell Bitcoins Page or Navigate from top navigation bar',
   trade: {
     releaseBtnTitle: 'release bitcoins',

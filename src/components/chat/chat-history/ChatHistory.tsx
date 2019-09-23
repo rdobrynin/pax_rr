@@ -4,6 +4,7 @@ import 'moment-timezone'
 import './chathistory.scss'
 import moment from 'moment'
 import { IMessage } from '../../../store/trades/types'
+import { Constants } from '../../../utils/constants'
 
 export interface ChatHistoryProps {
   messages?: IMessage[]
@@ -57,7 +58,7 @@ export class ChatHistory extends React.Component<ChatHistoryProps> {
                     </Moment>
                   </span>
                   </div>
-                  <div className="avatar"><img src={item.image} alt=""/></div>
+                  <div className="avatar"><img src={`${Constants.assetsUrl}/images/${item.image}`} alt=""/></div>
                 </li>
               ))}
             </React.Fragment>

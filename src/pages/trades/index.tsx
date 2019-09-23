@@ -41,7 +41,7 @@ import { ChatHeaderContainer } from '../../components/chat/chat-header/ChatHeade
 import { fetchRequest, deleteTrade, addMessageTradeChat } from '../../store/trades/actions'
 import { fetchRateRequest } from '../../store/rate/actions'
 import { updateSidebar } from '../../store/layout'
-import { ITrade, ITrades } from '../../store/trades/types'
+import { IMessage, ITrade, ITrades } from '../../store/trades/types'
 import { ApplicationState } from '../../store'
 import { connect } from 'react-redux'
 import LoadingSpinner from '../../components/spinner/Spinner'
@@ -108,15 +108,15 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
       return
     }
     this.state.isBuyer  ? selectedTrade.chat.isRead = false : selectedTrade.chat.isRead = true;
-    const messageObj = {
+    const messageObj: IMessage = {
       comment: inputValue,
       time: new Date().toISOString(),
       isBuyer: this.state.isBuyer ,
-      image: Constants.assetsUrl + ( this.state.isBuyer ? '/images/avatar_m.png' : '/images/avatar_w.png' )
+      image: this.state.isBuyer ? 'avatar_m.png' : 'avatar_w.png',
+      hash: selectedTrade.hash
     }
-    selectedTrade.chat.items.push(messageObj)
-    const { addMessageTradeChat: addMessagetoTrade } = this.props
-    addMessagetoTrade(selectedTrade)
+    const { addMessageTradeChat: addMessageToTrade } = this.props
+    addMessageToTrade(messageObj)
   }
 
   public render() {

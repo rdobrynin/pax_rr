@@ -1,6 +1,6 @@
 {
   "name": "Chanaaar",
-  "image": "http://localhost:5555/assets/images/avatar_m.png",
+  "image": "avatar_m.png",
   "reputationPositive": 23,
   "reputationNegative": 2,
   "trades": [
@@ -17,7 +17,8 @@
             "comment": "Hi folks!",
             "time": "2019-09-17T08:37:00+00:00",
             "isBuyer": true,
-            "image": "http://localhost:5555/assets/images/avatar_m.png"
+            "image": "avatar_m.png",
+            "hash": "41FF3er"
           }
         ]
       }
@@ -35,25 +36,29 @@
               "comment": "Sed ut perspiciatis omnis iste natus error sit voluptatem accusantium doloremque laudantium. All the Lorem Ipsum generators on the ...",
               "time": "2019-09-17T08:37:00+00:00",
               "isBuyer": true,
-              "image": "http://localhost:5555/assets/images/avatar_m.png"
+              "image": "avatar_m.png",
+              "hash": "41FF3er"
           },
           {
             "comment": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
             "time": "2019-09-17T08:38:00+00:00",
             "isBuyer": false,
-            "image": "http://localhost:5555/assets/images/avatar_w.png"
+            "image": "avatar_w.png",
+            "hash": "41FF3er"
           },
           {
             "comment": "Got it. Thank you.",
             "time": "2019-09-17T08:39:00+00:00",
             "isBuyer": true,
-            "image": "http://localhost:5555/assets/images/avatar_m.png"
+            "image": "avatar_m.png",
+            "hash": "41FF3er"
           },
           {
             "comment": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks",
             "time": "2019-09-17T08:48:00+00:00",
             "isBuyer": false,
-            "image": "http://localhost:5555/assets/images/avatar_w.png"
+            "image": "avatar_w.png",
+            "hash": "41FF3er"
           }
         ]
       }
@@ -71,13 +76,15 @@
             "comment": "Sed ut perspiciatis omnis iste natus error sit voluptatem accusantium doloremque laudantium",
             "time": "2019-09-17T08:37:00+00:00",
             "isBuyer": true,
-            "image": "http://localhost:5555/assets/images/avatar_m.png"
+            "image": "avatar_m.png",
+            "hash": "12AG4aq"
           },
           {
             "comment": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
             "time": "2019-09-17T08:38:00+00:00",
             "isBuyer": false,
-            "image": "http://localhost:5555/assets/images/avatar_w.png"
+            "image": "avatar_w.png",
+            "hash": "12AG4aq"
           }
         ]
       }
@@ -89,6 +96,7 @@
       "currency": "USD",
       "paymentMethod": "iTunes Gift Card",
       "chat": {
+        "hash": "79SH1xc",
         "isRead": false,
         "items": []
       }

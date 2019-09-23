@@ -51,7 +51,7 @@ export class TradeItem extends React.Component<IRate&TradeProps, State> {
             <div>
               <div className={'trade-item__action ' +
               ( this.props.chat.isRead ? 'trade-item__chat__is-read ' : '' ) +
-              ( this.props.chat.items.length < 1 ? 'trade-item__chat__empty-chat ' : '')}>
+              ( this.props.chat.items.length < 1 ? 'trade-item__chat__empty-chat ' : '' )}>
                 {this.props.name}&nbsp;<span>{Constants.trade.isBuyingTitle}</span></div>
               <div className={'trade-item__payment'}>{this.props.paymentMethod}</div>
               <div className={'trade-item__value'}>
@@ -61,7 +61,8 @@ export class TradeItem extends React.Component<IRate&TradeProps, State> {
             </div>
             <div className={'trade-item__buyer_wrapper'}>
               <div className={'trade-item__buyer'}>
-                <img src={this.props.image} alt={this.props.name}/>
+                <img src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/${this.props.image}`}
+                     alt={this.props.name}/>
               </div>
               <div className={'trade-item__status'}>
                 {this.props.tradeStatus}

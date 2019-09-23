@@ -3,11 +3,10 @@ import { RateActionTypes } from './types'
 import { fetchRateError, fetchRateSuccess } from './actions'
 import { callApi } from '../../utils/api'
 
-const API_ENDPOINT = 'https://api.coindesk.com'
-
 function* handleFetch() {
   try {
-    const res = yield call(callApi, 'get', API_ENDPOINT, '/v1/bpi/currentprice/USD.json')
+    const res = yield call(callApi, 'get', `${process.env.REACT_APP_API_RATE_ENDPOINT}`,
+      '/v1/bpi/currentprice/USD.json')
     if (res.error) {
       yield put(fetchRateError(res.error))
     } else {
