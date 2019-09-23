@@ -4,7 +4,7 @@ import './spinner.scss'
 
 const LoadingSpinner: React.FunctionComponent = () => (
   <Spinner>
-    <div className={'loader'}></div>
+    <div className={'loader'}/>
   </Spinner>
 )
 
@@ -15,6 +15,7 @@ const Spinner = styled('div')`
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 2;
+    background-color: ${props => props.theme.colors.background};
+    z-index:  ${props => props.theme.zIndex.overlay};
 }
 `

@@ -6,7 +6,7 @@ const TradeInformationTradeAmountContainer = styled('div')`
     justify-content: center;
     flex-direction: column;
     box-sizing: border-box;
-    border-right: 1px solid #d4d4d4;
-    border-bottom: 1px solid #d4d4d4;
+    border-right: 1px solid ${props => props.theme.colors.borders};
+    border-bottom: 1px solid ${props => props.theme.colors.borders};
 `
 export default TradeInformationTradeAmountContainer

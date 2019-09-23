@@ -37,6 +37,10 @@ export interface Theme {
   heights: {
     header: string;
   };
+  zIndex: {
+    default: number;
+    overlay: number;
+  }
 }
 
 export default styled as CreateStyled<Theme>;

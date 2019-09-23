@@ -8,12 +8,12 @@ const paxfulTheme: Theme = {
     headings: brandColors.black,
     black: brandColors.black,
     white: brandColors.white,
-    brand: brandColors.red,
+    brand: brandColors.brand,
     borders: brandColors.gray5,
     attrs: {
-      str: '#f44336',
+      str: '#B4BEC6',
       agi: '#39d402',
-      int: '#01a9f4',
+      int: '#C6D2E5',
     },
   },
   fontSizes: {
@@ -31,13 +31,17 @@ const paxfulTheme: Theme = {
     xl: '1200px',
   },
   widths: {
-    md: '720px',
-    lg: '960px',
-    xl: '1140px',
+    md: '767px',
+    lg: '940px',
+    xl: '1110px',
   },
   heights: {
     header: '60px',
   },
+  zIndex: {
+    default: 1,
+    overlay: 15
+  }
 };
 
 export default paxfulTheme;

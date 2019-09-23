@@ -7,10 +7,10 @@ const TradeWrapper = styled('div')`
     flex-wrap: wrap;
     flex: 1 1 auto;
     width: 100%;
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.white};
     box-shadow: 2px 1px 4px -1px rgba(216, 216, 216, 0.75);
-    border-right: 1px solid #d4d4d4;
-    border-left: 1px solid #d4d4d4;
+    border-right: 1px solid ${props => props.theme.colors.borders};
+    border-left: 1px solid ${props => props.theme.colors.borders};
     flex: 1 0 8%;
 
   @media ${device.desktop} {

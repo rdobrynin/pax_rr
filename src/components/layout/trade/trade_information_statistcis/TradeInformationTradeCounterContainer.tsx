@@ -5,6 +5,6 @@ const TradeInformationTradeCounterContainer = styled('div')`
     flex-basis: 50%;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 1px solid #d4d4d4;
+    border-bottom: 1px solid ${props => props.theme.colors.borders};
 `
 export default TradeInformationTradeCounterContainer

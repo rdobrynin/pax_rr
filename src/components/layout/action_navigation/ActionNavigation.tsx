@@ -17,8 +17,7 @@ export class ActionNavigation extends React.Component<IActionNavigationProps&Rou
         <Media query="(max-width: 767px)">
           {matches =>
             matches ? (
-              // @todo implement mobile layout
-              <div></div>
+              <div/>
             ) : (
 
               <div className={'action-navigation'}>
