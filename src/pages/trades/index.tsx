@@ -135,7 +135,7 @@ class TradesIndexPage extends React.Component<TradeProps, State> {
 
     return (
       <Page>
-        {loading && data.length === 0 && (
+        {loading && (
           <LoadingSpinner/>
         )}
         <TopNavigation title={Constants.title} links={linksTopNavigation} isOpen={false}/>
