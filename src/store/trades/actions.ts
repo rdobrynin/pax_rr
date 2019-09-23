@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions'
-import { TradesActionTypes, ITrades, ITrade, IMessage, IChat } from './types'
+import { TradesActionTypes, ITrades, ITrade } from './types'
 
 export const fetchRequest = () => action(TradesActionTypes.FETCH_REQUEST)
 
